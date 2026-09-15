@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="th">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ติวสอบ IC Plain — เส้นทาง 28 วัน</title>
 <!-- ติวสอบ IC Plain: เว็บบทเรียน 28 วัน -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ติวสอบ IC Plain — เส้นทาง 28 วัน</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
 <style>
@@ -29,7 +29,12 @@ p{margin:.5em 0}
 .muted{color:var(--g600)}
 table{border-collapse:collapse;width:100%;font-size:15.5px}
 th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--g300);vertical-align:top}
-th{background:var(--green-bg);color:var(--dark);font-weight:700}
+th{background:var(--green-bg);color:var(--dark);font-weight:700;white-space:nowrap}
+td a,.nw{white-space:nowrap}
+.c{text-align:center}
+.topic b{display:block;font-weight:600;color:var(--dark)}
+.topic .go{display:inline-block;font-size:14px;margin-top:2px}
+.topic{min-width:118px}
 .tbl{overflow-x:auto;border:1px solid var(--g300);border-radius:var(--r-md)}
 
 /* top bar */
@@ -45,6 +50,7 @@ th{background:var(--green-bg);color:var(--dark);font-weight:700}
 .menu-btn{display:none;align-items:center;gap:6px;white-space:nowrap;border:1px solid var(--g300);background:#fff;border-radius:10px;padding:6px 12px;font:inherit;font-weight:600;cursor:pointer;color:var(--dark)}
 .menu-btn .ico{font-size:20px;line-height:1}
 .side-head{display:none}
+nav.side .side-head button{flex:none;margin-right:2px}
 .scrim{display:none}
 
 
@@ -65,7 +71,12 @@ th{background:var(--green-bg);color:var(--dark);font-weight:700}
 
 /* layout */
 .wrap{max-width:1280px;margin:auto;display:grid;grid-template-columns:250px 1fr;gap:36px;padding:28px 20px 80px}
-nav.side{position:sticky;top:78px;align-self:start;max-height:calc(100vh - 96px);overflow:auto;font-size:15.5px}
+nav.side{position:sticky;top:78px;align-self:start;max-height:calc(100vh - 96px);display:flex;flex-direction:column;font-size:15.5px}
+.side-list{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+.side-list::-webkit-scrollbar{display:none;width:0;height:0}
+.side-more{display:none;position:relative;flex:none;text-align:center;font-size:13px;font-weight:700;color:var(--green);padding:6px 0 2px;background:#fff}
+.side-more::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:36px;background:linear-gradient(rgba(255,255,255,0),#fff);pointer-events:none}
+nav.side.has-more .side-more{display:block}
 nav.side h4{font-size:13px;color:var(--g600);margin:16px 0 4px;font-weight:600}
 nav.side a{display:block;color:var(--g900);text-decoration:none;padding:5px 10px;border-left:3px solid transparent;border-radius:0 8px 8px 0}
 nav.side a:hover{background:var(--green-bg)}
@@ -146,6 +157,7 @@ figcaption{font-size:14.5px;color:var(--g600);margin-top:6px}
 .chips button{font:inherit;font-size:14px;border:1px solid var(--g300);background:#fff;border-radius:999px;padding:3px 12px;cursor:pointer}
 .chips button[aria-pressed="true"]{background:var(--dark);color:#fff;border-color:var(--dark)}
 .glist{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:12px;margin-top:12px}
+.gnav{display:none}
 .term{border:1px solid var(--g300);border-radius:var(--r-md);padding:12px 16px;background:#fff}
 .term h4{font-size:18px}
 .term .en{color:var(--g600);font-size:14px}
@@ -195,15 +207,17 @@ footer b{font-size:22px;font-style:italic}
   .menu-btn{display:flex}
   .duo{grid-template-columns:1fr}
   /* drawer */
-  nav.side{position:fixed;top:0;left:0;bottom:0;width:min(300px,84vw);max-height:none;background:#fff;z-index:50;padding:0 16px 24px;box-shadow:4px 0 24px rgba(15,23,42,.18);transform:translateX(-105%);transition:transform .25s;visibility:hidden}
+  nav.side{position:fixed;top:0;left:0;bottom:auto;height:100vh;height:100dvh;width:min(300px,86%);max-height:none;overflow:hidden;background:#fff;z-index:50;padding:0 16px;box-shadow:4px 0 24px rgba(15,23,42,.18);transform:translateX(-105%);transition:transform .25s;visibility:hidden}
+  nav.side .side-list{padding-bottom:28px}
+  nav.side .side-more{padding-bottom:max(10px,env(safe-area-inset-bottom))}
   nav.side.open{transform:none;visibility:visible}
-  .side-head{display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;padding:14px 0 8px;border-bottom:1px solid var(--g100);margin-bottom:4px}
+  .side-head{display:flex;flex:none;align-items:center;justify-content:space-between;background:#fff;padding:14px 0 8px;border-bottom:1px solid var(--g100);margin-bottom:4px}
   .side-head b{font-size:18px;color:var(--dark)}
   .side-head button{border:0;background:var(--g100);width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer}
-  nav.side a{padding:10px 12px;font-size:16px}
+  nav.side a{padding:8px 12px;font-size:16px}
+  nav.side h4{margin-top:12px}
   .scrim{position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:40}
   .scrim.open{display:block}
-  body.lock{overflow:hidden}
 }
 @media (max-width:720px){
   html{scroll-padding-top:128px}
@@ -243,7 +257,12 @@ footer b{font-size:22px;font-style:italic}
   .num span{font-size:14px;line-height:1.45;display:block}
   table{font-size:14.5px}
   th,td{padding:7px 9px}
-  .tbl table{min-width:520px}
+  .tbl table{font-size:13.5px;line-height:1.55}
+  .tbl th,.tbl td{padding:7px 6px}
+  .tbl th:first-child,.tbl td:first-child{padding-left:10px}
+  .tbl th:last-child,.tbl td:last-child{padding-right:10px}
+  .tbl th{white-space:normal;word-break:keep-all;vertical-align:bottom}
+  .tbl td{word-break:normal;overflow-wrap:normal}
   .tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;margin-right:-16px}
   .tabs button{flex:none}
   .days{margin-left:10px}
@@ -256,6 +275,21 @@ footer b{font-size:22px;font-style:italic}
   .gtools input{min-width:0;font-size:16px}
   .q button{padding:10px 12px}
   footer b{font-size:19px}
+  /* glossary carousel */
+  .glist{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:0;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:14px -16px 0 0;padding:2px 16px 6px 0}
+  .glist::-webkit-scrollbar{display:none}
+  .glist .term{flex:0 0 86%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;min-height:230px;padding:16px 18px;border-radius:18px;border-top:6px solid var(--green);box-shadow:0 2px 10px rgba(15,23,42,.06)}
+  .glist .term h4{font-size:21px;margin-top:4px}
+  .glist .term .cat{float:none;order:-1;align-self:flex-start;background:var(--green-bg);border-radius:999px;padding:1px 10px}
+  .glist .term .s,.glist .term .dd{font-size:16px;line-height:1.65}
+  .glist .empty{flex:1 0 100%}
+  .gnav{display:flex;align-items:center;gap:12px;margin-top:10px}
+  .gnav button{flex:none;width:44px;height:44px;border-radius:50%;border:2px solid var(--green);background:#fff;color:var(--green);font-size:26px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0 0 3px}
+  .gnav button:disabled{border-color:var(--g300);color:var(--g300);cursor:default}
+  .gpos{flex:1;text-align:center;font-size:14px;font-weight:700;color:var(--g600)}
+  .gbar{height:6px;background:var(--g100);border-radius:999px;overflow:hidden;margin-top:4px}
+  .gbar i{display:block;height:100%;width:0;background:var(--green);border-radius:999px;transition:width .2s}
+  .gnav.hide{display:none}
 }
 @media (max-width:720px){
   .route .lbl{font-size:22px}
@@ -306,6 +340,7 @@ footer b{font-size:22px;font-style:italic}
 <div class="scrim" id="scrim"></div>
 <nav class="side" id="side" aria-label="สารบัญ">
   <div class="side-head"><b>สารบัญ</b><button id="sideClose" aria-label="ปิดสารบัญ">✕</button></div>
+  <div class="side-list" id="sideList">
   <h4>เริ่มต้น</h4>
   <a href="#overview">ภาพรวมข้อสอบ</a>
   <a href="#plan">แผน 28 วัน</a>
@@ -329,6 +364,8 @@ footer b{font-size:22px;font-style:italic}
   <a href="#glossary">คำศัพท์และนิยาม</a>
   <a href="#quiz">แบบทดสอบย่อย</a>
   <a href="#tips">เทคนิคทำข้อสอบ</a>
+  </div>
+  <div class="side-more" id="sideMore" aria-hidden="true">เลื่อนดูหัวข้อเพิ่ม ↓</div>
 </nav>
 
 <main>
@@ -344,13 +381,13 @@ footer b{font-size:22px;font-style:italic}
     <p>ข้อสอบปรนัยประมาณ 100 ข้อ เวลาประมาณ 2 ชั่วโมงครึ่ง ครอบคลุม 3 หมวด เกณฑ์ผ่านคือคะแนนรวม ≥ 70% <b>และ</b> หมวดจรรยาบรรณ ≥ 70% (ตรวจสอบจำนวนข้อ เวลา และเกณฑ์ล่าสุดกับ ATI หรือ SET ก่อนสมัครสอบ)</p>
   </div>
   <div class="tbl"><table>
-    <thead><tr><th>ชุดฝึก</th><th>หัวข้อ</th><th>ข้อ</th><th>หมวดสอบจริง</th><th>ลักษณะ</th><th>บทเรียน</th></tr></thead>
+    <thead><tr><th>ชุดฝึก</th><th class="c">ข้อ</th><th>หมวดสอบ</th><th>ลักษณะ</th></tr></thead>
     <tbody>
-      <tr><td>1</td><td>จรรยาบรรณ / กฎระเบียบ / การแนะนำที่เหมาะสม</td><td>33</td><td>หมวด 2</td><td>หลักการ + จำเกณฑ์ตัวเลข</td><td><a href="#l10">บท 10–11</a></td></tr>
-      <tr><td>2</td><td>คำนวณ (ผลตอบแทน ความเสี่ยง มูลค่า NAV)</td><td>39</td><td>หมวด 1 + 3</td><td>ใช้สูตร ~15 สูตร</td><td><a href="#l1">บท 1–4</a></td></tr>
-      <tr><td>3</td><td>กองทุนรวม</td><td>27</td><td>หมวด 3</td><td>ประเภทกองทุน + NAV/TER</td><td><a href="#l9">บท 9</a></td></tr>
-      <tr><td>4</td><td>ตราสารทุน</td><td>26</td><td>หมวด 3</td><td>กลไกตลาด + DDM/PER/PBV</td><td><a href="#l5">บท 5–7</a></td></tr>
-      <tr><td>5</td><td>ตราสารหนี้</td><td>27</td><td>หมวด 3</td><td>ดูเรชัน + มูลค่า/current yield</td><td><a href="#l8">บท 8</a></td></tr>
+      <tr><td class="topic"><b>1. จรรยาบรรณ / กฎระเบียบ / การแนะนำที่เหมาะสม</b><a class="go" href="#l10">อ่านบท 10–11</a></td><td class="c">33</td><td class="nw">หมวด 2</td><td>หลักการ + เกณฑ์ตัวเลข</td></tr>
+      <tr><td class="topic"><b>2. คำนวณ (ผลตอบแทน ความเสี่ยง มูลค่า NAV)</b><a class="go" href="#l1">อ่านบท 1–4</a></td><td class="c">39</td><td class="nw">หมวด 1 + 3</td><td>ใช้สูตร ~15 สูตร</td></tr>
+      <tr><td class="topic"><b>3. กองทุนรวม</b><a class="go" href="#l9">อ่านบท 9</a></td><td class="c">27</td><td class="nw">หมวด 3</td><td>ประเภทกองทุน + NAV/TER</td></tr>
+      <tr><td class="topic"><b>4. ตราสารทุน</b><a class="go" href="#l5">อ่านบท 5–7</a></td><td class="c">26</td><td class="nw">หมวด 3</td><td>กลไกตลาด + DDM, PER, PBV</td></tr>
+      <tr><td class="topic"><b>5. ตราสารหนี้</b><a class="go" href="#l8">อ่านบท 8</a></td><td class="c">27</td><td class="nw">หมวด 3</td><td>ดูเรชัน + มูลค่า + current yield</td></tr>
     </tbody>
   </table></div>
   <div class="key"><b>ข้อสอบยอดนิยม</b> ข้อคำนวณเดียวกันออกซ้ำทั้งชุดคำนวณและชุดเนื้อหา เช่น มูลค่าเวลาวอร์แรนท์ กำไรขาดทุนวอร์แรนท์ มูลค่าหุ้นกู้ NAV ต่อหน่วย ผลตอบแทนกองทุน และ TER ข้อกลุ่มนี้ต้องทำได้ครบทุกข้อ</div>
@@ -868,7 +905,14 @@ footer b{font-size:22px;font-style:italic}
     <input type="search" id="gSearch" placeholder="ค้นหาคำศัพท์ เช่น ดูเรชัน, NAV, churning" aria-label="ค้นหาคำศัพท์">
   </div>
   <div class="chips" id="gChips" role="group" aria-label="กรองตามหมวด"></div>
-  <div class="glist" id="glist"></div>
+  <div class="gcar" id="gcar">
+    <div class="glist" id="glist" role="region" aria-roledescription="carousel" aria-label="การ์ดคำศัพท์" tabindex="0"></div>
+    <div class="gnav" id="gnav">
+      <button id="gPrev" aria-label="คำก่อนหน้า">‹</button>
+      <div class="gpos"><span id="gPos">1 / 1</span><div class="gbar"><i id="gBar"></i></div></div>
+      <button id="gNext" aria-label="คำถัดไป">›</button>
+    </div>
+  </div>
 </section>
 
 <!-- ===== QUIZ ===== -->
@@ -909,18 +953,24 @@ function setMode(m){
 modeBtns.forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
 
 /* ---------- mobile menu ---------- */
+const sideList=document.getElementById('sideList');
+function moreHint(){const nav=document.getElementById('side');nav.classList.toggle('has-more',sideList.scrollHeight-sideList.scrollTop-sideList.clientHeight>8)}
+sideList.addEventListener('scroll',moreHint,{passive:true});
+window.addEventListener('resize',moreHint);
+moreHint();
+document.getElementById('sideMore').addEventListener('click',()=>sideList.scrollBy({top:sideList.clientHeight*.7,behavior:'smooth'}));
 const side=document.getElementById('side'),menuBtn=document.getElementById('menuBtn');
 const scrim=document.getElementById('scrim');
-function drawer(open){side.classList.toggle('open',open);scrim.classList.toggle('open',open);document.body.classList.toggle('lock',open);menuBtn.setAttribute('aria-expanded',open);if(open)document.getElementById('sideClose').focus();else menuBtn.focus({preventScroll:true})}
+function drawer(open){side.classList.toggle('open',open);scrim.classList.toggle('open',open);if(open){sideList.scrollTop=0;requestAnimationFrame(moreHint)}menuBtn.setAttribute('aria-expanded',open);if(open)document.getElementById('sideClose').focus({preventScroll:true});else menuBtn.focus({preventScroll:true})}
 menuBtn.addEventListener('click',()=>drawer(true));
 document.getElementById('sideClose').addEventListener('click',()=>drawer(false));
 scrim.addEventListener('click',()=>drawer(false));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&side.classList.contains('open'))drawer(false)});
-side.addEventListener('click',e=>{if(e.target.tagName==='A'&&side.classList.contains('open')){side.classList.remove('open');scrim.classList.remove('open');document.body.classList.remove('lock');menuBtn.setAttribute('aria-expanded',false)}});
+side.addEventListener('click',e=>{if(e.target.tagName==='A'&&side.classList.contains('open')){side.classList.remove('open');scrim.classList.remove('open');menuBtn.setAttribute('aria-expanded',false)}});
 
 /* ---------- active nav ---------- */
 const links=[...side.querySelectorAll('a')];
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-30% 0px -60% 0px'});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id));moreHint()}})},{rootMargin:'-30% 0px -60% 0px'});
 document.querySelectorAll('section.blk').forEach(s=>obs.observe(s));
 
 /* ---------- plan ---------- */
@@ -1083,9 +1133,31 @@ function renderG(){
   const q=$('gSearch').value.trim().toLowerCase();
   const list=G.filter(g=>(gCat==='ทั้งหมด'||g[2]===gCat)&&(!q||g.join(' ').toLowerCase().includes(q)));
   $('gCount').textContent=`${list.length} คำ`;
+  const _gl=document.getElementById('glist'); if(_gl)_gl.scrollLeft=0;
   $('glist').innerHTML=list.length?list.map(([t,en,c,s,d])=>`<div class="term"><span class="cat">${c}</span><h4>${t}</h4><div class="en">${en}</div><div class="s">🧒 ${s}</div><p class="dd">${d}</p></div>`).join(''):'<p class="empty">ไม่พบคำนี้ ลองพิมพ์ภาษาอังกฤษ หรือเลือกหมวด "ทั้งหมด"</p>';
+  if(window.gReady)gUpdate();
 }
 renderG();
+
+/* glossary carousel (mobile) */
+const gl=$('glist'),gnav=$('gnav');
+const gStep=()=>{const c=gl.querySelector('.term');return c?c.getBoundingClientRect().width+12:gl.clientWidth};
+function gIndex(){return Math.round(gl.scrollLeft/gStep())}
+function gUpdate(){
+  const n=gl.querySelectorAll('.term').length, i=Math.min(n-1,Math.max(0,gIndex()));
+  gnav.classList.toggle('hide',n<=1);
+  $('gPos').textContent=n?`${i+1} / ${n}`:'0 / 0';
+  $('gBar').style.width=n?((i+1)/n*100)+'%':'0';
+  $('gPrev').disabled=i<=0; $('gNext').disabled=i>=n-1;
+  gl.querySelectorAll('.term').forEach((c,k)=>{c.setAttribute('aria-label',`${k+1} จาก ${n}`);c.setAttribute('role','group')});
+}
+function gGo(d){gl.scrollTo({left:(gIndex()+d)*gStep(),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+$('gPrev').addEventListener('click',()=>gGo(-1));
+$('gNext').addEventListener('click',()=>gGo(1));
+gl.addEventListener('keydown',e=>{if(getComputedStyle(gl).display!=='flex')return;if(e.key==='ArrowRight'){e.preventDefault();gGo(1)}if(e.key==='ArrowLeft'){e.preventDefault();gGo(-1)}});
+let gRaf;gl.addEventListener('scroll',()=>{cancelAnimationFrame(gRaf);gRaf=requestAnimationFrame(gUpdate)},{passive:true});
+window.addEventListener('resize',gUpdate);
+window.gReady=true;gUpdate();
 
 /* ---------- quiz ---------- */
 const Q=[
