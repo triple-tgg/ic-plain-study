@@ -37,12 +37,16 @@ th{background:var(--green-bg);color:var(--dark);font-weight:700}
 .top-in{max-width:1280px;margin:auto;display:flex;align-items:center;gap:16px;padding:10px 20px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--dark);text-decoration:none}
 .brand-mark{width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:800;position:relative}
-.brand-mark::after{content:"";position:absolute;right:6px;top:6px;width:8px;height:8px;border-radius:50%;background:#fff}
+.brand-mark::after{content:"";position:absolute;right:-3px;top:-3px;width:10px;height:10px;border:2px solid #fff;background:var(--yellow)!important;border-radius:50%;background:#fff}
 .brand small{background:var(--green);color:#fff;border-radius:6px;padding:0 7px;font-size:14px}
 .mode{margin-left:auto;display:flex;background:var(--g100);border-radius:999px;padding:4px}
-.mode button{border:0;background:transparent;font:inherit;font-size:15px;font-weight:600;padding:6px 14px;border-radius:999px;cursor:pointer;color:var(--g600)}
+.mode button{white-space:nowrap;display:flex;align-items:center;justify-content:center;gap:5px;border:0;background:transparent;font:inherit;font-size:15px;font-weight:600;padding:6px 14px;border-radius:999px;cursor:pointer;color:var(--g600)}
 .mode button[aria-pressed="true"]{background:var(--green);color:#fff}
-.menu-btn{display:none;border:1px solid var(--g300);background:#fff;border-radius:10px;padding:6px 10px;font:inherit;cursor:pointer}
+.menu-btn{display:none;align-items:center;gap:6px;white-space:nowrap;border:1px solid var(--g300);background:#fff;border-radius:10px;padding:6px 12px;font:inherit;font-weight:600;cursor:pointer;color:var(--dark)}
+.menu-btn .ico{font-size:20px;line-height:1}
+.side-head{display:none}
+.scrim{display:none}
+
 
 /* hero */
 .hero{background:linear-gradient(160deg,var(--green-bg) 0%,#fff 60%);border-bottom:1px solid var(--green-line)}
@@ -141,7 +145,7 @@ figcaption{font-size:14.5px;color:var(--g600);margin-top:6px}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chips button{font:inherit;font-size:14px;border:1px solid var(--g300);background:#fff;border-radius:999px;padding:3px 12px;cursor:pointer}
 .chips button[aria-pressed="true"]{background:var(--dark);color:#fff;border-color:var(--dark)}
-.glist{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:12px}
+.glist{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:12px;margin-top:12px}
 .term{border:1px solid var(--g300);border-radius:var(--r-md);padding:12px 16px;background:#fff}
 .term h4{font-size:18px}
 .term .en{color:var(--g600);font-size:14px}
@@ -153,12 +157,23 @@ body.m-detail .term .s{display:none}
 .empty{color:var(--g600);padding:20px 0}
 
 /* formula */
-.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:14px}
 .fcard{border:1px solid var(--g300);border-radius:var(--r-md);overflow:hidden}
 .fcard h4{background:var(--green-bg);padding:7px 14px;border-bottom:1px solid var(--green-line)}
 .fcard dl{margin:0;padding:6px 14px 10px}
 .fcard dt{font-weight:700;margin-top:6px;font-size:15px}
-.fcard dd{margin:0;font-size:15.5px;color:var(--g900)}
+.fcard dd{margin:0;font-size:15.5px;color:var(--g900);border-radius:6px;transition:filter .2s,background .2s}
+.fcard .pic{padding:10px 12px 0;background:#fff}
+.fcard .pic svg{width:100%;height:auto;display:block}
+.fcard .pic svg text{font-family:Sarabun,sans-serif}
+.hook{margin:8px 14px 0;background:var(--yellow-bg);border:1px dashed #EAB308;border-radius:10px;padding:5px 12px;font-size:15px;line-height:1.5}
+.hook b{color:#A16207}
+.ftools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:4px 0 16px}
+.ftools button{font:inherit;font-weight:700;border:2px solid var(--green);background:#fff;color:var(--green);border-radius:999px;padding:6px 16px;cursor:pointer}
+.ftools button[aria-pressed="true"]{background:var(--green);color:#fff}
+.fgrid.memo dd{filter:blur(6px);background:var(--g100);cursor:pointer;user-select:none}
+.fgrid.memo .hook{filter:blur(5px);cursor:pointer}
+.fgrid.memo dd.show,.fgrid.memo .hook.show{filter:none;background:var(--green-bg)}
 
 /* quiz */
 .q{border:1px solid var(--g300);border-radius:var(--r-md);padding:12px 16px;margin:12px 0;max-width:48em}
@@ -176,25 +191,91 @@ footer b{font-size:22px;font-style:italic}
 
 @media (max-width:980px){
   .hero-in{grid-template-columns:1fr}
-  .wrap{grid-template-columns:1fr}
-  nav.side{position:fixed;top:62px;left:0;bottom:0;width:270px;max-height:none;background:#fff;z-index:30;padding:10px 16px;border-right:1px solid var(--g300);transform:translateX(-105%);transition:transform .25s}
-  nav.side.open{transform:none}
-  .menu-btn{display:block}
+  .wrap{grid-template-columns:1fr;gap:0}
+  .menu-btn{display:flex}
   .duo{grid-template-columns:1fr}
+  /* drawer */
+  nav.side{position:fixed;top:0;left:0;bottom:0;width:min(300px,84vw);max-height:none;background:#fff;z-index:50;padding:0 16px 24px;box-shadow:4px 0 24px rgba(15,23,42,.18);transform:translateX(-105%);transition:transform .25s;visibility:hidden}
+  nav.side.open{transform:none;visibility:visible}
+  .side-head{display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;padding:14px 0 8px;border-bottom:1px solid var(--g100);margin-bottom:4px}
+  .side-head b{font-size:18px;color:var(--dark)}
+  .side-head button{border:0;background:var(--g100);width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer}
+  nav.side a{padding:10px 12px;font-size:16px}
+  .scrim{position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:40}
+  .scrim.open{display:block}
+  body.lock{overflow:hidden}
 }
-@media (max-width:560px){
-  .mode button{padding:5px 9px;font-size:13.5px}
-  .brand span.t{display:none}
+@media (max-width:720px){
+  html{scroll-padding-top:128px}
+  body{font-size:16px}
+  /* header: row 1 = menu + brand, row 2 = full-width mode switch */
+  .top-in{flex-wrap:wrap;gap:8px 10px;padding:8px 14px 10px}
+  .brand{font-size:18px}
+  .brand-mark{width:34px;height:34px;font-size:18px;border-radius:10px}
+  .menu-btn{order:2;margin-left:auto;padding:6px 10px}
+  .brand{order:1}
+  .mode{order:3;margin-left:0;width:100%;display:grid;grid-template-columns:repeat(3,1fr);padding:3px}
+  .mode button{padding:7px 4px;font-size:14.5px}
+  /* hero */
+  .hero-in{padding:26px 16px 18px;gap:18px}
+  .hero h1 em{display:block}
+  .hero .lead{font-size:16.5px}
+  .pass{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .pass div{padding:8px 12px;font-size:14.5px;line-height:1.4}
+  .pass b{font-size:22px}
+  .pass div.y{grid-column:1/-1;order:-1}
+  .route{margin:0 -6px;width:calc(100% + 12px)}
+  /* content */
+  .wrap{padding:8px 16px 56px}
+  section.blk{padding:22px 0 28px}
+  .sec-head{gap:6px 10px}
+  .sec-head .wk{order:-1}
+  .intro{font-size:16.5px}
+  .simple,.ex .b,.calc{padding-left:14px;padding-right:14px}
+  .ex .b{overflow-wrap:anywhere}
+  .calc{border-radius:16px}
+  .calc .fields{grid-template-columns:1fr 1fr}
+  .calc input{font-size:16px;padding:8px 10px}
+  .calc .out{font-size:16px}
+  .nums{grid-template-columns:1fr 1fr;gap:8px}
+  .num{padding:8px 12px}
+  .num b{font-size:20px}
+  .num span{font-size:14px;line-height:1.45;display:block}
+  table{font-size:14.5px}
+  th,td{padding:7px 9px}
+  .tbl table{min-width:520px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;margin-right:-16px}
+  .tabs button{flex:none}
+  .days{margin-left:10px}
+  .days li{padding-left:20px}
+  .days label{flex-wrap:wrap;gap:4px 10px}
+  .days .d{min-width:auto}
+  .days label>span:last-child{flex-basis:100%;padding-left:28px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;margin-right:-16px}
+  .chips button{flex:none}
+  .gtools input{min-width:0;font-size:16px}
+  .q button{padding:10px 12px}
+  footer b{font-size:19px}
+}
+@media (max-width:720px){
+  .route .lbl{font-size:22px}
+  .route .hint{display:none}
+}
+@media (max-width:340px){
+  .brand small{display:none}
+  .mode button{font-size:13.5px}
+  .nums{grid-template-columns:1fr}
+  .calc .fields{grid-template-columns:1fr}
 }
 </style>
 
 <div class="top"><div class="top-in">
-  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="side">☰ สารบัญ</button>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="side"><span class="ico" aria-hidden="true">☰</span>สารบัญ</button>
   <a class="brand" href="#top"><span class="brand-mark">IC</span><span class="t">ติวสอบ IC</span><small>Plain</small></a>
   <div class="mode" role="group" aria-label="เลือกระดับคำอธิบาย">
-    <button data-mode="simple">🧒 เข้าใจง่าย</button>
-    <button data-mode="detail">📘 ละเอียด</button>
-    <button data-mode="both" aria-pressed="true">ดูทั้งสองแบบ</button>
+    <button data-mode="simple"><span aria-hidden="true">🧒</span>เข้าใจง่าย</button>
+    <button data-mode="detail"><span aria-hidden="true">📘</span>ละเอียด</button>
+    <button data-mode="both" aria-pressed="true">ทั้งสองแบบ</button>
   </div>
 </div></div>
 
@@ -213,16 +294,18 @@ footer b{font-size:22px;font-style:italic}
     <path d="M30 280 C140 280 120 190 230 190 S330 280 420 230 S470 90 610 70" fill="none" stroke="#D1D5DB" stroke-width="30" stroke-linecap="round"/>
     <path d="M30 280 C140 280 120 190 230 190 S330 280 420 230 S470 90 610 70" fill="none" stroke="url(#rg)" stroke-width="30" stroke-linecap="round" stroke-dasharray="1200" stroke-dashoffset="1200" id="roadPath"><animate attributeName="stroke-dashoffset" to="0" dur="1.6s" fill="freeze" begin=".2s"/></path>
     <path d="M30 280 C140 280 120 190 230 190 S330 280 420 230 S470 90 610 70" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="10 12"/>
-    <g class="stop" tabindex="0" data-week="1"><circle class="o" cx="60" cy="279" r="26" fill="#fff" stroke="#16A34A" stroke-width="5"/><text x="60" y="287" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">1</text><text x="60" y="235" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">คำนวณพื้นฐาน</text></g>
-    <g class="stop" tabindex="0" data-week="2"><circle class="o" cx="230" cy="190" r="26" fill="#fff" stroke="#2563EB" stroke-width="5"/><text x="230" y="198" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">2</text><text x="230" y="146" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">หุ้น + ตราสารหนี้</text></g>
-    <g class="stop" tabindex="0" data-week="3"><circle class="o" cx="420" cy="230" r="26" fill="#fff" stroke="#CA8A04" stroke-width="5"/><text x="420" y="238" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">3</text><text x="420" y="286" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">กองทุน + จรรยาบรรณ</text></g>
-    <g class="stop" tabindex="0" data-week="4"><circle class="o" cx="596" cy="73" r="28" fill="#FACC15" stroke="#0F172A" stroke-width="5"/><text x="596" y="81" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">4</text><text x="585" y="130" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">จำลองสอบ</text></g>
-    <text x="30" y="30" font-size="15" fill="#6B7280">คลิกจุดบนเส้นทางเพื่อดูแผนแต่ละสัปดาห์</text>
+    <g class="stop" tabindex="0" data-week="1"><circle class="o" cx="60" cy="279" r="26" fill="#fff" stroke="#16A34A" stroke-width="5"/><text x="60" y="287" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">1</text><text class="lbl" x="90" y="324" text-anchor="start" font-size="15" font-weight="700" fill="#0F172A">คำนวณพื้นฐาน</text></g>
+    <g class="stop" tabindex="0" data-week="2"><circle class="o" cx="230" cy="190" r="26" fill="#fff" stroke="#2563EB" stroke-width="5"/><text x="230" y="198" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">2</text><text class="lbl" x="230" y="146" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">หุ้น + ตราสารหนี้</text></g>
+    <g class="stop" tabindex="0" data-week="3"><circle class="o" cx="420" cy="230" r="26" fill="#fff" stroke="#CA8A04" stroke-width="5"/><text x="420" y="238" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">3</text><text class="lbl" x="420" y="286" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">กองทุน + จรรยาบรรณ</text></g>
+    <g class="stop" tabindex="0" data-week="4"><circle class="o" cx="596" cy="73" r="28" fill="#FACC15" stroke="#0F172A" stroke-width="5"/><text x="596" y="81" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">4</text><text class="lbl" x="636" y="28" text-anchor="end" font-size="15" font-weight="700" fill="#0F172A">จำลองสอบ</text></g>
+    <text class="hint" x="30" y="30" font-size="15" fill="#6B7280">คลิกจุดบนเส้นทางเพื่อดูแผนแต่ละสัปดาห์</text>
   </svg>
 </div></header>
 
 <div class="wrap">
+<div class="scrim" id="scrim"></div>
 <nav class="side" id="side" aria-label="สารบัญ">
+  <div class="side-head"><b>สารบัญ</b><button id="sideClose" aria-label="ปิดสารบัญ">✕</button></div>
   <h4>เริ่มต้น</h4>
   <a href="#overview">ภาพรวมข้อสอบ</a>
   <a href="#plan">แผน 28 วัน</a>
@@ -768,7 +851,12 @@ footer b{font-size:22px;font-style:italic}
 <!-- ===== FORMULAS ===== -->
 <section class="blk" id="formulas">
   <div class="sec-head"><h2>สรุปสูตร</h2></div>
-  <p class="intro">ท่องจนเขียนได้จากความจำภายในวันที่ 22</p>
+  <p class="intro">ท่องจนเขียนได้จากความจำภายในวันที่ 22 ดูภาพให้จำโครงของสูตรก่อน แล้วใช้โหมดท่องจำซ่อนสูตรเพื่อทดสอบตัวเอง</p>
+  <div class="ftools">
+    <button id="memoBtn" aria-pressed="false">โหมดท่องจำ: ซ่อนสูตร</button>
+    <button id="memoShow">เปิดดูทั้งหมด</button>
+    <span class="muted" id="memoHint" hidden>แตะที่สูตรที่ถูกเบลอเพื่อเฉลยทีละข้อ</span>
+  </div>
   <div class="fgrid" id="fgrid"></div>
 </section>
 
@@ -822,8 +910,13 @@ modeBtns.forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
 
 /* ---------- mobile menu ---------- */
 const side=document.getElementById('side'),menuBtn=document.getElementById('menuBtn');
-menuBtn.addEventListener('click',()=>{const o=side.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o)});
-side.addEventListener('click',e=>{if(e.target.tagName==='A'){side.classList.remove('open');menuBtn.setAttribute('aria-expanded',false)}});
+const scrim=document.getElementById('scrim');
+function drawer(open){side.classList.toggle('open',open);scrim.classList.toggle('open',open);document.body.classList.toggle('lock',open);menuBtn.setAttribute('aria-expanded',open);if(open)document.getElementById('sideClose').focus();else menuBtn.focus({preventScroll:true})}
+menuBtn.addEventListener('click',()=>drawer(true));
+document.getElementById('sideClose').addEventListener('click',()=>drawer(false));
+scrim.addEventListener('click',()=>drawer(false));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&side.classList.contains('open'))drawer(false)});
+side.addEventListener('click',e=>{if(e.target.tagName==='A'&&side.classList.contains('open')){side.classList.remove('open');scrim.classList.remove('open');document.body.classList.remove('lock');menuBtn.setAttribute('aria-expanded',false)}});
 
 /* ---------- active nav ---------- */
 const links=[...side.querySelectorAll('a')];
@@ -880,14 +973,20 @@ function bond(){const par=v('bPar'),c=v('bC')/100,k=v('bK')/100,n=v('bN'),f=Math
 
 /* ---------- formulas ---------- */
 const formulas=[
- ['ผลตอบแทนและเงินตามเวลา',[['HPR','(ราคาขาย − ราคาซื้อ + ปันผล) ÷ ราคาซื้อ'],['ผลตอบแทนที่แท้จริง','≈ ผลตอบแทน − เงินเฟ้อ'],['มูลค่าอนาคต','FV = PV × (1+r)ⁿ'],['EAR','(1 + APR/m)ᵐ − 1'],['ค่าเฉลี่ยเรขาคณิต','ⁿ√[(1+r₁)(1+r₂)…] − 1'],['ผลตอบแทนคาดหวัง','Σ(ความน่าจะเป็น × ผลตอบแทน)'],['CV','SD ÷ ผลตอบแทน (ต่ำ = ดี)'],['ผลตอบแทนพอร์ต','Σ(น้ำหนัก × ผลตอบแทน)']]],
- ['CAPM และการวัดผล',[['CAPM','k = Rf + β(Rm − Rf)'],['ส่วนชดเชยความเสี่ยง','β(Rm − Rf)'],['ตัดสินใจ','คาดหวัง > k → ซื้อ ; < k → ขาย'],['Sharpe','(Rp − Rf) ÷ SD'],['Treynor','(Rp − Rf) ÷ β'],['Jensen\'s alpha','Rp − [Rf + β(Rm − Rf)]']]],
- ['ประเมินมูลค่าหุ้น',[['DDM (Gordon)','P = D₁ ÷ (k − g), D₁ = D₀(1+g)'],['PER','ราคาเหมาะสม = PER × EPS'],['PBV','ราคาเหมาะสม = PBV × BV'],['ROE','กำไรสุทธิ ÷ ส่วนผู้ถือหุ้น'],['D/E','หนี้สิน ÷ ส่วนผู้ถือหุ้น (ต่ำ = เสี่ยงต่ำ)']]],
- ['วอร์แรนท์',[['มูลค่าที่แท้จริง (call)','max(ราคาหุ้น − ราคาใช้สิทธิ, 0)'],['มูลค่าเวลา','ราคาวอร์แรนท์ − มูลค่าที่แท้จริง'],['กำไร/ขาดทุน','Δราคาหุ้น × delta × จำนวนหน่วย'],['ราคาเพิ่มเมื่อ','หุ้น↑ ผันผวน↑ อายุ↑ ดอกเบี้ย↑ ราคาใช้สิทธิ↓ ปันผล↓']]],
- ['ตราสารหนี้',[['หุ้นกู้จ่ายครึ่งปี','ดอก/งวด = คูปอง÷2, k/งวด = k÷2, งวด = ปี×2'],['Zero coupon','P = Par ÷ (1 + k/2)^(ปี×2)'],['Current yield','ดอกเบี้ยต่อปี ÷ ราคาตลาด'],['คูปอง vs k','> k Premium ; < k Discount ; = Par'],['ดูเรชันสูงเมื่อ','อายุยาว คูปองต่ำ YTM ต่ำ']]],
- ['กองทุนรวม',[['NAV ต่อหน่วย','(ทรัพย์สิน + รายได้ค้างรับ + เงินสด − หนี้สิน − ค่าใช้จ่ายค้างจ่าย) ÷ จำนวนหน่วย'],['ผลตอบแทนผู้ลงทุน','(bid ตอนขาย − offer ตอนซื้อ + ปันผล) ÷ offer ตอนซื้อ'],['TER','ค่าจัดการ + trustee + นายทะเบียน + อื่น ๆ (อัตราจริง)'],['เก็บจากผู้ลงทุน','ค่าธรรมเนียมขาย + รับซื้อคืน']]]
+['ผลตอบแทนและเงินตามเวลา','<svg viewBox="0 0 340 170" role="img" aria-label="แท่งเงินโตทบต้นจาก 100,000 เป็น 115,763 ใน 3 ปี และตัวอย่างค่าเฉลี่ยเรขาคณิต">\n<text x="4" y="14" font-size="13" font-weight="700" fill="#0F172A">ก้อนหิมะ: ดอกเบี้ยออกดอกต่อ</text>\n<line x1="4" y1="140" x2="200" y2="140" stroke="#9CA3AF"/>\n<rect x="10" y="90" width="36" height="50" rx="5" fill="#BBF7D0"/><rect x="60" y="80" width="36" height="60" rx="5" fill="#86EFAC"/>\n<rect x="110" y="68" width="36" height="72" rx="5" fill="#22C55E"/><rect x="160" y="54" width="36" height="86" rx="5" fill="#16A34A"/>\n<g font-size="12" text-anchor="middle" fill="#0F172A" font-weight="700"><text x="28" y="85">100k</text><text x="78" y="75">105k</text><text x="128" y="63">110k</text><text x="178" y="49">116k</text></g>\n<g font-size="11" text-anchor="middle" fill="#6B7280"><text x="28" y="155">ปี 0</text><text x="78" y="155">ปี 1</text><text x="128" y="155">ปี 2</text><text x="178" y="155">ปี 3</text></g>\n<g font-size="11" fill="#2563EB" font-weight="700"><text x="44" y="36">×1.05</text><text x="94" y="36">×1.05</text><text x="144" y="30">×1.05</text></g>\n<rect x="212" y="22" width="124" height="44" rx="10" fill="#0F172A"/><text x="274" y="42" text-anchor="middle" font-size="13" fill="#FACC15" font-weight="700">FV = PV×(1+r)ⁿ</text><text x="274" y="58" text-anchor="middle" font-size="11" fill="#fff">คูณ (1+r) ซ้ำ n ครั้ง</text>\n<rect x="212" y="76" width="124" height="80" rx="10" fill="#EFF6FF" stroke="#2563EB"/>\n<text x="274" y="94" text-anchor="middle" font-size="12" font-weight="700" fill="#2563EB">GM ≤ ค่าเฉลี่ยธรรมดา</text>\n<text x="274" y="112" text-anchor="middle" font-size="11" fill="#0F172A">+20% แล้ว −10%</text>\n<text x="274" y="128" text-anchor="middle" font-size="11" fill="#0F172A">100 → 120 → 108</text>\n<text x="274" y="146" text-anchor="middle" font-size="11" fill="#16A34A" font-weight="700">โตจริง 3.92% ไม่ใช่ 5%</text>\n</svg>','<b>จำว่า:</b> ผลตอบแทน = (ได้เพิ่ม + ปันผล) ÷ ทุน ; ของแท้ = หักเงินเฟ้อ ; CV ยิ่งต่ำยิ่งคุ้ม',[['HPR','(ราคาขาย − ราคาซื้อ + ปันผล) ÷ ราคาซื้อ'],['ผลตอบแทนที่แท้จริง','≈ ผลตอบแทน − เงินเฟ้อ'],['มูลค่าอนาคต','FV = PV × (1+r)ⁿ'],['EAR','(1 + APR/m)ᵐ − 1'],['ค่าเฉลี่ยเรขาคณิต','ⁿ√[(1+r₁)(1+r₂)…] − 1'],['ผลตอบแทนคาดหวัง','Σ(ความน่าจะเป็น × ผลตอบแทน)'],['CV','SD ÷ ผลตอบแทน (ต่ำ = ดี)'],['ผลตอบแทนพอร์ต','Σ(น้ำหนัก × ผลตอบแทน)']]],
+['CAPM และการวัดผล','<svg viewBox="0 0 340 170" role="img" aria-label="ตึก CAPM ชั้นล่างคือ Rf ชั้นบนคือเบต้าคูณส่วนชดเชยความเสี่ยง รวมเป็น k">\n<text x="4" y="14" font-size="13" font-weight="700" fill="#0F172A">ตึก CAPM: ฐานปลอดภัย + ชั้นความเสี่ยง</text>\n<line x1="4" y1="150" x2="170" y2="150" stroke="#6B7280" stroke-width="2"/>\n<rect x="20" y="118" width="110" height="32" rx="4" fill="#22C55E"/><text x="75" y="139" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Rf (ได้แน่)</text>\n<rect x="20" y="96" width="110" height="20" rx="4" fill="#93C5FD"/><rect x="20" y="74" width="110" height="20" rx="4" fill="#60A5FA"/><rect x="20" y="36" width="110" height="36" rx="4" fill="#2563EB"/>\n<text x="75" y="59" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">β × (Rm − Rf)</text>\n<text x="75" y="89" text-anchor="middle" font-size="10" fill="#0F172A">β สูง = ตึกสูง</text>\n<path d="M140 36 h8 v114 h-8" fill="none" stroke="#0F172A" stroke-width="2"/><text x="154" y="98" font-size="15" font-weight="800" fill="#0F172A">k</text>\n<rect x="182" y="24" width="154" height="62" rx="10" fill="#F0FDF4" stroke="#16A34A"/>\n<text x="192" y="44" font-size="12" font-weight="700" fill="#16A34A">คาดหวัง &gt; k → ซื้อ (ถูก)</text>\n<text x="192" y="62" font-size="12" font-weight="700" fill="#DC2626">คาดหวัง &lt; k → ขาย (แพง)</text>\n<text x="192" y="78" font-size="10.5" fill="#6B7280">(เหนือเส้น SML = ซื้อ)</text>\n<rect x="182" y="94" width="74" height="62" rx="10" fill="#FEF9C3"/><text x="219" y="114" text-anchor="middle" font-size="13" font-weight="800" fill="#A16207">Sharpe</text><text x="219" y="131" text-anchor="middle" font-size="12" fill="#0F172A">÷ SD</text><text x="219" y="147" text-anchor="middle" font-size="10" fill="#6B7280">S คู่ S เสี่ยงรวม</text>\n<rect x="262" y="94" width="74" height="62" rx="10" fill="#EFF6FF"/><text x="299" y="114" text-anchor="middle" font-size="13" font-weight="800" fill="#2563EB">Treynor</text><text x="299" y="131" text-anchor="middle" font-size="12" fill="#0F172A">÷ β</text><text x="299" y="147" text-anchor="middle" font-size="10" fill="#6B7280">เสี่ยงตลาดเท่านั้น</text>\n</svg>','<b>จำว่า:</b> ตัวบนเหมือนกันหมด (Rp − Rf) ต่างกันแค่ตัวหาร: Sharpe หาร SD, Treynor หาร β',[['CAPM','k = Rf + β(Rm − Rf)'],['ส่วนชดเชยความเสี่ยง','β(Rm − Rf)'],['ตัดสินใจ','คาดหวัง > k → ซื้อ ; < k → ขาย'],['Sharpe','(Rp − Rf) ÷ SD'],['Treynor','(Rp − Rf) ÷ β'],['Jensen\'s alpha','Rp − [Rf + β(Rm − Rf)]']]],
+['ประเมินมูลค่าหุ้น','<svg viewBox="0 0 340 170" role="img" aria-label="DDM ปลูกเมล็ด D0 ให้โตเป็น D1 แล้วหารด้วย k ลบ g และ PER PBV คือตัวคูณคูณฐาน">\n<text x="4" y="14" font-size="13" font-weight="700" fill="#0F172A">DDM: ปลูกปันผลให้โต 1 ปีก่อน แล้วค่อยหาร</text>\n<ellipse cx="36" cy="66" rx="14" ry="18" fill="#A16207"/><text x="36" y="71" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">D₀</text>\n<text x="36" y="102" text-anchor="middle" font-size="10" fill="#6B7280">เพิ่งจ่าย</text>\n<path d="M56 66 H112" stroke="#16A34A" stroke-width="3" marker-end="url(#ah)"/>\n<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="#16A34A"/></marker></defs>\n<text x="84" y="56" text-anchor="middle" font-size="12" font-weight="700" fill="#16A34A">×(1+g)</text>\n<circle cx="140" cy="66" r="24" fill="#16A34A"/><path d="M140 42 q-10 -14 0 -20 q10 6 0 20" fill="#22C55E"/>\n<text x="140" y="71" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">D₁</text>\n<text x="140" y="104" text-anchor="middle" font-size="10" fill="#6B7280">ปีหน้า</text>\n<text x="180" y="72" font-size="20" font-weight="800" fill="#0F172A">÷</text>\n<rect x="200" y="48" width="130" height="36" rx="10" fill="#0F172A"/><text x="265" y="72" text-anchor="middle" font-size="15" font-weight="800" fill="#FACC15">(k − g)</text>\n<text x="265" y="100" text-anchor="middle" font-size="10" fill="#DC2626">ต้องมี k &gt; g</text>\n<rect x="4" y="116" width="162" height="46" rx="10" fill="#EFF6FF"/><text x="85" y="135" text-anchor="middle" font-size="13" font-weight="800" fill="#2563EB">PER × EPS</text><text x="85" y="153" text-anchor="middle" font-size="10.5" fill="#0F172A">EPS = กำไร ÷ จำนวนหุ้น</text>\n<rect x="174" y="116" width="162" height="46" rx="10" fill="#EFF6FF"/><text x="255" y="135" text-anchor="middle" font-size="13" font-weight="800" fill="#2563EB">PBV × BV</text><text x="255" y="153" text-anchor="middle" font-size="10.5" fill="#0F172A">BV = ส่วนผู้ถือหุ้น ÷ หุ้น</text>\n</svg>','<b>จำว่า:</b> ราคาเหมาะสม = ตัวคูณ × ฐาน ; ตลาดถูกกว่า = ซื้อ',[['DDM (Gordon)','P = D₁ ÷ (k − g), D₁ = D₀(1+g)'],['PER','ราคาเหมาะสม = PER × EPS'],['PBV','ราคาเหมาะสม = PBV × BV'],['ROE','กำไรสุทธิ ÷ ส่วนผู้ถือหุ้น'],['D/E','หนี้สิน ÷ ส่วนผู้ถือหุ้น (ต่ำ = เสี่ยงต่ำ)']]],
+['วอร์แรนท์','<svg viewBox="0 0 340 170" role="img" aria-label="ราคาวอร์แรนท์ประกอบด้วยของจริงบวกความหวัง และปัจจัยที่ทำให้ราคาขึ้นลง">\n<text x="4" y="14" font-size="13" font-weight="700" fill="#0F172A">ราคา = ของจริง + ความหวัง</text>\n<rect x="4" y="24" width="200" height="40" rx="10" fill="#16A34A"/><text x="104" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">มูลค่าที่แท้จริง</text><text x="104" y="56" text-anchor="middle" font-size="11" fill="#fff">หุ้น − ราคาใช้สิทธิ (ไม่ต่ำกว่า 0)</text>\n<rect x="208" y="24" width="128" height="40" rx="10" fill="#FACC15"/><text x="272" y="40" text-anchor="middle" font-size="12" font-weight="700" fill="#0F172A">มูลค่าเวลา</text><text x="272" y="56" text-anchor="middle" font-size="11" fill="#0F172A">ราคา − ของจริง</text>\n<text x="4" y="86" font-size="12" font-weight="700" fill="#16A34A">▲ ราคา call warrant เพิ่มเมื่อ</text>\n<g font-size="11.5" font-weight="700"><rect x="4" y="92" width="74" height="24" rx="12" fill="#DCFCE7"/><text x="41" y="108" text-anchor="middle" fill="#166534">หุ้น ↑</text>\n<rect x="82" y="92" width="80" height="24" rx="12" fill="#DCFCE7"/><text x="122" y="108" text-anchor="middle" fill="#166534">ผันผวน ↑</text>\n<rect x="166" y="92" width="74" height="24" rx="12" fill="#DCFCE7"/><text x="203" y="108" text-anchor="middle" fill="#166534">อายุ ↑</text>\n<rect x="244" y="92" width="92" height="24" rx="12" fill="#DCFCE7"/><text x="290" y="108" text-anchor="middle" fill="#166534">ดอกเบี้ย ↑</text>\n<rect x="4" y="122" width="110" height="24" rx="12" fill="#FEE2E2"/><text x="59" y="138" text-anchor="middle" fill="#991B1B">ราคาใช้สิทธิ ↓</text>\n<rect x="118" y="122" width="74" height="24" rx="12" fill="#FEE2E2"/><text x="155" y="138" text-anchor="middle" fill="#991B1B">ปันผล ↓</text></g>\n<text x="200" y="138" font-size="11" fill="#6B7280">สองตัวนี้ "สวนทาง"</text>\n<text x="4" y="164" font-size="11.5" fill="#0F172A">กำไร ≈ Δหุ้น × delta × จำนวนหน่วย</text>\n</svg>','<b>จำว่า:</b> ปัจจัยส่วนใหญ่ "ยิ่งมากยิ่งแพง" มีแค่ราคาใช้สิทธิกับปันผลที่สวนทาง',[['มูลค่าที่แท้จริง (call)','max(ราคาหุ้น − ราคาใช้สิทธิ, 0)'],['มูลค่าเวลา','ราคาวอร์แรนท์ − มูลค่าที่แท้จริง'],['กำไร/ขาดทุน','Δราคาหุ้น × delta × จำนวนหน่วย'],['ราคาเพิ่มเมื่อ','หุ้น↑ ผันผวน↑ อายุ↑ ดอกเบี้ย↑ ราคาใช้สิทธิ↓ ปันผล↓']]],
+['ตราสารหนี้','<svg viewBox="0 0 340 170" role="img" aria-label="คูปองเทียบ k กำหนดราคา premium discount par และการแปลงค่าเมื่อจ่ายครึ่งปี">\n<text x="4" y="14" font-size="13" font-weight="700" fill="#0F172A">คูปองแข่งกับตลาด (k)</text>\n<g font-size="12.5" font-weight="700">\n<rect x="4" y="22" width="206" height="30" rx="8" fill="#DCFCE7"/><text x="14" y="42" fill="#166534">คูปอง &gt; k  ชนะตลาด</text><text x="200" y="42" text-anchor="end" fill="#16A34A">▲ Premium</text>\n<rect x="4" y="56" width="206" height="30" rx="8" fill="#FEE2E2"/><text x="14" y="76" fill="#991B1B">คูปอง &lt; k  แพ้ตลาด</text><text x="200" y="76" text-anchor="end" fill="#DC2626">▼ Discount</text>\n<rect x="4" y="90" width="206" height="30" rx="8" fill="#F3F4F6"/><text x="14" y="110" fill="#0F172A">คูปอง = k  เสมอ</text><text x="200" y="110" text-anchor="end" fill="#6B7280">= Par</text></g>\n<g transform="translate(274 64)"><polygon points="0,26 -12,42 12,42" fill="#0F172A"/><g transform="rotate(16)"><rect x="-56" y="18" width="112" height="8" rx="4" fill="#16A34A"/><rect x="-58" y="-4" width="48" height="20" rx="5" fill="#2563EB"/><text x="-34" y="11" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">ดอก↑</text><rect x="8" y="-4" width="52" height="20" rx="5" fill="#FACC15"/><text x="34" y="11" text-anchor="middle" font-size="10" font-weight="700" fill="#0F172A">ราคา↓</text></g></g>\n<text x="274" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#0F172A">ไม้กระดก</text>\n<rect x="4" y="128" width="332" height="36" rx="10" fill="#0F172A"/>\n<text x="170" y="146" text-anchor="middle" font-size="12.5" font-weight="700" fill="#FACC15">จ่ายครึ่งปี: คูปอง ÷2  |  k ÷2  |  ปี ×2</text>\n<text x="170" y="160" text-anchor="middle" font-size="10.5" fill="#fff">ดูเรชันสูง = อายุยาว + คูปองต่ำ + YTM ต่ำ</text>\n</svg>','<b>จำว่า:</b> คูปองชนะตลาด ขายแพง ; ดูเรชัน "ยาว-ต่ำ-ต่ำ" = ไวต่อดอกเบี้ยมาก',[['หุ้นกู้จ่ายครึ่งปี','ดอก/งวด = คูปอง÷2, k/งวด = k÷2, งวด = ปี×2'],['Zero coupon','P = Par ÷ (1 + k/2)^(ปี×2)'],['Current yield','ดอกเบี้ยต่อปี ÷ ราคาตลาด'],['คูปอง vs k','> k Premium ; < k Discount ; = Par'],['ดูเรชันสูงเมื่อ','อายุยาว คูปองต่ำ YTM ต่ำ']]],
+['กองทุนรวม','<svg viewBox="0 0 340 170" role="img" aria-label="NAV ของบวกลบของออกหารจำนวนหน่วย ซื้อที่ราคาขายสูง ขายที่ราคารับซื้อคืนต่ำ และ TER นับเฉพาะค่าใช้จ่ายในกองทุน">\n<text x="4" y="14" font-size="13" font-weight="700" fill="#0F172A">NAV: ของเข้า − ของออก ÷ หน่วย</text>\n<g font-size="11" font-weight="700">\n<rect x="4" y="22" width="70" height="22" rx="11" fill="#DCFCE7"/><text x="39" y="37" text-anchor="middle" fill="#166534">+ ทรัพย์สิน</text>\n<rect x="78" y="22" width="62" height="22" rx="11" fill="#DCFCE7"/><text x="109" y="37" text-anchor="middle" fill="#166534">+ ค้างรับ</text>\n<rect x="144" y="22" width="60" height="22" rx="11" fill="#DCFCE7"/><text x="174" y="37" text-anchor="middle" fill="#166534">+ เงินสด</text>\n<rect x="4" y="48" width="70" height="22" rx="11" fill="#FEE2E2"/><text x="39" y="63" text-anchor="middle" fill="#991B1B">− หนี้สิน</text>\n<rect x="78" y="48" width="126" height="22" rx="11" fill="#FEE2E2"/><text x="141" y="63" text-anchor="middle" fill="#991B1B">− ค่าใช้จ่ายค้างจ่าย</text></g>\n<line x1="4" y1="78" x2="204" y2="78" stroke="#0F172A" stroke-width="2"/>\n<rect x="64" y="84" width="80" height="22" rx="11" fill="#2563EB"/><text x="104" y="99" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">÷ จำนวนหน่วย</text>\n<rect x="216" y="22" width="120" height="84" rx="10" fill="#FEF9C3"/>\n<text x="276" y="40" text-anchor="middle" font-size="12" font-weight="800" fill="#A16207">ผู้ลงทุนเสียเปรียบ</text>\n<text x="226" y="62" font-size="12" font-weight="700" fill="#0F172A">ซื้อ = offer</text><text x="328" y="62" text-anchor="end" font-size="14" fill="#DC2626">▲</text>\n<text x="226" y="84" font-size="12" font-weight="700" fill="#0F172A">ขาย = bid</text><text x="328" y="84" text-anchor="end" font-size="14" fill="#DC2626">▼</text>\n<text x="276" y="100" text-anchor="middle" font-size="10" fill="#6B7280">ซื้อแพง ขายถูก</text>\n<path d="M20 124 L90 112 L160 124 V162 H20Z" fill="#F0FDF4" stroke="#16A34A" stroke-width="2"/>\n<text x="90" y="138" text-anchor="middle" font-size="11.5" font-weight="800" fill="#16A34A">TER = 4 ค่าในบ้าน</text>\n<text x="90" y="154" text-anchor="middle" font-size="10" fill="#0F172A">จัดการ ดูแลฯ นายทะเบียน อื่นๆ</text>\n<rect x="166" y="130" width="12" height="32" fill="#A16207"/>\n<text x="186" y="142" font-size="10.5" font-weight="700" fill="#DC2626">ค่าขาย/รับซื้อคืน</text>\n<text x="186" y="157" font-size="10.5" fill="#6B7280">= ค่าผ่านประตู ไม่นับ</text>\n</svg>','<b>จำว่า:</b> ซื้อ offer ขาย bid ; TER นับ 4 ค่าในบ้าน ไม่นับค่าผ่านประตู (ค่าขาย/รับซื้อคืน)',[['NAV ต่อหน่วย','(ทรัพย์สิน + รายได้ค้างรับ + เงินสด − หนี้สิน − ค่าใช้จ่ายค้างจ่าย) ÷ จำนวนหน่วย'],['ผลตอบแทนผู้ลงทุน','(bid ตอนขาย − offer ตอนซื้อ + ปันผล) ÷ offer ตอนซื้อ'],['TER','ค่าจัดการ + trustee + นายทะเบียน + อื่น ๆ (อัตราจริง)'],['เก็บจากผู้ลงทุน','ค่าธรรมเนียมขาย + รับซื้อคืน']]]
 ];
-$('fgrid').innerHTML=formulas.map(([t,rows])=>`<div class="fcard"><h4>${t}</h4><dl>${rows.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl></div>`).join('');
+$('fgrid').innerHTML=formulas.map(([t,pic,hook,rows])=>`<div class="fcard"><h4>${t}</h4><div class="pic">${pic}</div><p class="hook">${hook}</p><dl>${rows.map(([a,b])=>`<dt>${a}</dt><dd tabindex="-1">${b}</dd>`).join('')}</dl></div>`).join('');
+const fgrid=$('fgrid'),memoBtn=$('memoBtn');
+function memo(on){fgrid.classList.toggle('memo',on);memoBtn.setAttribute('aria-pressed',on);memoBtn.textContent=on?'โหมดท่องจำ: เปิดอยู่':'โหมดท่องจำ: ซ่อนสูตร';$('memoHint').hidden=!on;fgrid.querySelectorAll('dd,.hook').forEach(d=>{d.classList.remove('show');d.tabIndex=on?0:-1})}
+memoBtn.addEventListener('click',()=>memo(!fgrid.classList.contains('memo')));
+$('memoShow').addEventListener('click',()=>fgrid.querySelectorAll('dd,.hook').forEach(d=>d.classList.add('show')));
+fgrid.addEventListener('click',e=>{const d=e.target.closest('dd,.hook');if(d&&fgrid.classList.contains('memo'))d.classList.toggle('show')});
+fgrid.addEventListener('keydown',e=>{const d=e.target.closest('dd,.hook');if(d&&(e.key==='Enter'||e.key===' ')&&fgrid.classList.contains('memo')){e.preventDefault();d.classList.toggle('show')}});
 
 /* ---------- glossary ---------- */
 const G=[
