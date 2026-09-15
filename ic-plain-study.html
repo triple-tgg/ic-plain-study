@@ -1,0 +1,1014 @@
+<!-- ติวสอบ IC Plain: เว็บบทเรียน 28 วัน -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#16A34A; --green-l:#22C55E; --green-bg:#F0FDF4; --green-line:#BBF7D0;
+  --yellow:#FACC15; --yellow-bg:#FEF9C3;
+  --blue:#2563EB; --blue-bg:#EFF6FF;
+  --dark:#0F172A; --g900:#111827; --g600:#6B7280; --g300:#D1D5DB; --g100:#F3F4F6; --white:#FFFFFF;
+  --red:#DC2626;
+  --r-lg:22px; --r-md:14px; --r-sm:8px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;font-family:Sarabun,"Noto Sans Thai",Tahoma,sans-serif;color:var(--g900);background:var(--white);font-size:17px;line-height:1.75}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:6px}
+h1,h2,h3,h4{color:var(--dark);line-height:1.3;margin:0}
+h2{font-size:clamp(26px,3.4vw,34px);font-weight:800}
+h3{font-size:21px;font-weight:700}
+h4{font-size:17px;font-weight:700}
+p{margin:.5em 0}
+.muted{color:var(--g600)}
+table{border-collapse:collapse;width:100%;font-size:15.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--g300);vertical-align:top}
+th{background:var(--green-bg);color:var(--dark);font-weight:700}
+.tbl{overflow-x:auto;border:1px solid var(--g300);border-radius:var(--r-md)}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--g300)}
+.top-in{max-width:1280px;margin:auto;display:flex;align-items:center;gap:16px;padding:10px 20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--dark);text-decoration:none}
+.brand-mark{width:38px;height:38px;border-radius:11px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:800;position:relative}
+.brand-mark::after{content:"";position:absolute;right:6px;top:6px;width:8px;height:8px;border-radius:50%;background:#fff}
+.brand small{background:var(--green);color:#fff;border-radius:6px;padding:0 7px;font-size:14px}
+.mode{margin-left:auto;display:flex;background:var(--g100);border-radius:999px;padding:4px}
+.mode button{border:0;background:transparent;font:inherit;font-size:15px;font-weight:600;padding:6px 14px;border-radius:999px;cursor:pointer;color:var(--g600)}
+.mode button[aria-pressed="true"]{background:var(--green);color:#fff}
+.menu-btn{display:none;border:1px solid var(--g300);background:#fff;border-radius:10px;padding:6px 10px;font:inherit;cursor:pointer}
+
+/* hero */
+.hero{background:linear-gradient(160deg,var(--green-bg) 0%,#fff 60%);border-bottom:1px solid var(--green-line)}
+.hero-in{max-width:1280px;margin:auto;padding:48px 20px 30px;display:grid;grid-template-columns:1fr 1.15fr;gap:32px;align-items:center}
+.hero h1{font-size:clamp(34px,5vw,56px);font-weight:800;letter-spacing:-.5px}
+.hero h1 em{font-style:italic;color:var(--green)}
+.hero .lead{font-size:19px;color:var(--g600);max-width:36em}
+.pass{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.pass div{background:#fff;border:2px solid var(--green);border-radius:var(--r-md);padding:8px 16px}
+.pass b{font-size:28px;color:var(--green);display:block;line-height:1.1}
+.pass div.y{border-color:var(--yellow)} .pass div.y b{color:#A16207}
+.route{width:100%;height:auto}
+.route .stop{cursor:pointer}
+.route .stop:hover circle.o,.route .stop:focus circle.o{fill:var(--yellow)}
+.route text{font-family:Sarabun,sans-serif}
+
+/* layout */
+.wrap{max-width:1280px;margin:auto;display:grid;grid-template-columns:250px 1fr;gap:36px;padding:28px 20px 80px}
+nav.side{position:sticky;top:78px;align-self:start;max-height:calc(100vh - 96px);overflow:auto;font-size:15.5px}
+nav.side h4{font-size:13px;color:var(--g600);margin:16px 0 4px;font-weight:600}
+nav.side a{display:block;color:var(--g900);text-decoration:none;padding:5px 10px;border-left:3px solid transparent;border-radius:0 8px 8px 0}
+nav.side a:hover{background:var(--green-bg)}
+nav.side a.on{border-left-color:var(--green);background:var(--green-bg);color:var(--green);font-weight:700}
+main{min-width:0}
+section.blk{padding:26px 0 36px;border-bottom:1px solid var(--g100)}
+.sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.wk{font-size:14px;font-weight:700;border-radius:999px;padding:2px 12px;background:var(--green);color:#fff}
+.wk.w2{background:var(--blue)} .wk.w3{background:#A16207} .wk.w4{background:var(--dark)}
+.intro{font-size:18px;max-width:46em}
+
+/* mode visibility */
+body.m-simple .detail{display:none}
+body.m-detail .simple{display:none}
+.simple,.detail{max-width:48em}
+.simple{background:var(--yellow-bg);border-radius:var(--r-md);padding:14px 18px;margin:12px 0;border:1px dashed #EAB308}
+.simple::before{content:"🧒 แบบเข้าใจง่าย";display:block;font-size:13px;font-weight:700;color:#A16207}
+.detail{margin:12px 0}
+.detail::before{content:"📘 แบบละเอียด";display:block;font-size:13px;font-weight:700;color:var(--blue)}
+body.m-simple .simple::before,body.m-detail .detail::before{display:none}
+.detail ul,.simple ul{margin:.3em 0;padding-left:1.3em}
+
+.ex{border:2px solid var(--green);border-radius:var(--r-md);margin:16px 0;overflow:hidden;max-width:48em}
+.ex h4{background:var(--green);color:#fff;padding:7px 16px}
+.ex .b{padding:10px 18px}
+.ex .ans{background:var(--green-bg);border-radius:var(--r-sm);padding:6px 12px;font-weight:700;color:var(--green);display:inline-block;margin-top:4px}
+.calc-line{font-variant-numeric:tabular-nums}
+.trap{border-left:5px solid var(--red);background:#FEF2F2;padding:8px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:12px 0;max-width:48em}
+.trap b{color:var(--red)}
+.key{border-left:5px solid var(--blue);background:var(--blue-bg);padding:8px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:12px 0;max-width:48em}
+
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.duo>div{border:1px solid var(--g300);border-radius:var(--r-md);padding:12px 16px}
+.duo>div h4{margin-bottom:4px}
+.duo>div.g{border-top:5px solid var(--green)} .duo>div.bl{border-top:5px solid var(--blue)}
+
+figure{margin:16px 0;max-width:48em}
+figure svg{width:100%;height:auto;display:block;background:#fff;border:1px solid var(--g300);border-radius:var(--r-md)}
+figcaption{font-size:14.5px;color:var(--g600);margin-top:6px}
+
+/* calculators */
+.calc{background:var(--dark);color:#fff;border-radius:var(--r-lg);padding:18px 20px;margin:18px 0;max-width:48em}
+.calc h4{color:var(--yellow);margin-bottom:8px}
+.calc .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.calc label{font-size:14px;color:#CBD5E1;display:block}
+.calc input{width:100%;font:inherit;padding:6px 10px;border-radius:8px;border:1px solid #334155;background:#1E293B;color:#fff}
+.calc .out{margin-top:12px;font-size:18px;background:#1E293B;border-radius:10px;padding:10px 14px}
+.calc .out b{color:var(--green-l)}
+.calc .out .bad{color:#FCA5A5}
+
+/* plan */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
+.tabs button{font:inherit;font-weight:700;border:2px solid var(--g300);background:#fff;border-radius:999px;padding:6px 16px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.days{list-style:none;padding:0;margin:0;border-left:4px solid var(--green-line);margin-left:14px}
+.days li{position:relative;padding:8px 0 12px 26px}
+.days li::before{content:"";position:absolute;left:-12px;top:14px;width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--green)}
+.days li.done::before{background:var(--green)}
+.days label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.days input{margin-top:6px;width:18px;height:18px;accent-color:var(--green)}
+.days .d{font-weight:800;color:var(--green);min-width:62px}
+.days .tag{font-size:14px;color:var(--g600);display:block}
+.days a{font-size:14px}
+.progress{height:12px;background:var(--g100);border-radius:999px;overflow:hidden;margin:8px 0 2px;max-width:480px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--green-l));width:0;transition:width .4s}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:14px 0}
+.num{border:1px solid var(--g300);border-radius:var(--r-md);padding:10px 14px}
+.num b{font-size:26px;color:var(--green);display:block;line-height:1.2}
+.num span{font-size:15px}
+
+/* glossary */
+.gtools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0}
+.gtools input{font:inherit;flex:1;min-width:220px;padding:9px 14px;border:2px solid var(--g300);border-radius:999px}
+.gtools input:focus{border-color:var(--green);outline:none}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{font:inherit;font-size:14px;border:1px solid var(--g300);background:#fff;border-radius:999px;padding:3px 12px;cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--dark);color:#fff;border-color:var(--dark)}
+.glist{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:12px}
+.term{border:1px solid var(--g300);border-radius:var(--r-md);padding:12px 16px;background:#fff}
+.term h4{font-size:18px}
+.term .en{color:var(--g600);font-size:14px}
+.term .cat{font-size:12.5px;font-weight:700;color:var(--green);float:right}
+.term .s{background:var(--yellow-bg);border-radius:8px;padding:4px 10px;margin:6px 0;font-size:15.5px}
+.term .dd{font-size:15.5px;margin:6px 0 0}
+body.m-simple .term .dd{display:none}
+body.m-detail .term .s{display:none}
+.empty{color:var(--g600);padding:20px 0}
+
+/* formula */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.fcard{border:1px solid var(--g300);border-radius:var(--r-md);overflow:hidden}
+.fcard h4{background:var(--green-bg);padding:7px 14px;border-bottom:1px solid var(--green-line)}
+.fcard dl{margin:0;padding:6px 14px 10px}
+.fcard dt{font-weight:700;margin-top:6px;font-size:15px}
+.fcard dd{margin:0;font-size:15.5px;color:var(--g900)}
+
+/* quiz */
+.q{border:1px solid var(--g300);border-radius:var(--r-md);padding:12px 16px;margin:12px 0;max-width:48em}
+.q p{font-weight:700}
+.q button{display:block;width:100%;text-align:left;font:inherit;border:1px solid var(--g300);background:#fff;border-radius:10px;padding:7px 12px;margin:6px 0;cursor:pointer}
+.q button:hover{border-color:var(--green)}
+.q button.right{background:var(--green-bg);border-color:var(--green);font-weight:700}
+.q button.wrong{background:#FEF2F2;border-color:var(--red)}
+.q .why{display:none;font-size:15.5px;background:var(--g100);border-radius:8px;padding:6px 12px}
+.q.answered .why{display:block}
+.score{font-size:20px;font-weight:800;color:var(--green)}
+
+footer{background:var(--green);color:#fff;padding:26px 20px;text-align:center}
+footer b{font-size:22px;font-style:italic}
+
+@media (max-width:980px){
+  .hero-in{grid-template-columns:1fr}
+  .wrap{grid-template-columns:1fr}
+  nav.side{position:fixed;top:62px;left:0;bottom:0;width:270px;max-height:none;background:#fff;z-index:30;padding:10px 16px;border-right:1px solid var(--g300);transform:translateX(-105%);transition:transform .25s}
+  nav.side.open{transform:none}
+  .menu-btn{display:block}
+  .duo{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .mode button{padding:5px 9px;font-size:13.5px}
+  .brand span.t{display:none}
+}
+</style>
+
+<div class="top"><div class="top-in">
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="side">☰ สารบัญ</button>
+  <a class="brand" href="#top"><span class="brand-mark">IC</span><span class="t">ติวสอบ IC</span><small>Plain</small></a>
+  <div class="mode" role="group" aria-label="เลือกระดับคำอธิบาย">
+    <button data-mode="simple">🧒 เข้าใจง่าย</button>
+    <button data-mode="detail">📘 ละเอียด</button>
+    <button data-mode="both" aria-pressed="true">ดูทั้งสองแบบ</button>
+  </div>
+</div></div>
+
+<header class="hero" id="top"><div class="hero-in">
+  <div>
+    <h1>สอบผ่าน IC Plain ด้วย<em>เส้นทาง 28 วัน</em></h1>
+    <p class="lead">บทเรียนครบ 3 หมวดสอบ อธิบายได้สองระดับ เลือก "เข้าใจง่าย" เมื่อเพิ่งเริ่ม แล้วสลับเป็น "ละเอียด" เมื่อพร้อมทำข้อสอบ ทุกบทมีตัวอย่างคำนวณและเครื่องคิดเลขให้ลองเปลี่ยนตัวเลขเอง</p>
+    <div class="pass">
+      <div><b>≥ 70%</b>คะแนนรวม</div>
+      <div class="y"><b>≥ 70%</b>หมวดจรรยาบรรณ (ต้องผ่านแยก)</div>
+      <div><b>~100 ข้อ</b>ประมาณ 2.5 ชั่วโมง</div>
+    </div>
+  </div>
+  <svg class="route" viewBox="0 0 640 330" role="img" aria-label="เส้นทางเรียน 4 สัปดาห์ คลิกแต่ละจุดเพื่อไปที่แผนของสัปดาห์นั้น">
+    <defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#22C55E"/><stop offset="1" stop-color="#16A34A"/></linearGradient></defs>
+    <path d="M30 280 C140 280 120 190 230 190 S330 280 420 230 S470 90 610 70" fill="none" stroke="#D1D5DB" stroke-width="30" stroke-linecap="round"/>
+    <path d="M30 280 C140 280 120 190 230 190 S330 280 420 230 S470 90 610 70" fill="none" stroke="url(#rg)" stroke-width="30" stroke-linecap="round" stroke-dasharray="1200" stroke-dashoffset="1200" id="roadPath"><animate attributeName="stroke-dashoffset" to="0" dur="1.6s" fill="freeze" begin=".2s"/></path>
+    <path d="M30 280 C140 280 120 190 230 190 S330 280 420 230 S470 90 610 70" fill="none" stroke="#fff" stroke-width="2.5" stroke-dasharray="10 12"/>
+    <g class="stop" tabindex="0" data-week="1"><circle class="o" cx="60" cy="279" r="26" fill="#fff" stroke="#16A34A" stroke-width="5"/><text x="60" y="287" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">1</text><text x="60" y="235" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">คำนวณพื้นฐาน</text></g>
+    <g class="stop" tabindex="0" data-week="2"><circle class="o" cx="230" cy="190" r="26" fill="#fff" stroke="#2563EB" stroke-width="5"/><text x="230" y="198" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">2</text><text x="230" y="146" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">หุ้น + ตราสารหนี้</text></g>
+    <g class="stop" tabindex="0" data-week="3"><circle class="o" cx="420" cy="230" r="26" fill="#fff" stroke="#CA8A04" stroke-width="5"/><text x="420" y="238" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">3</text><text x="420" y="286" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">กองทุน + จรรยาบรรณ</text></g>
+    <g class="stop" tabindex="0" data-week="4"><circle class="o" cx="596" cy="73" r="28" fill="#FACC15" stroke="#0F172A" stroke-width="5"/><text x="596" y="81" text-anchor="middle" font-weight="800" font-size="22" fill="#0F172A">4</text><text x="585" y="130" text-anchor="middle" font-size="15" font-weight="700" fill="#0F172A">จำลองสอบ</text></g>
+    <text x="30" y="30" font-size="15" fill="#6B7280">คลิกจุดบนเส้นทางเพื่อดูแผนแต่ละสัปดาห์</text>
+  </svg>
+</div></header>
+
+<div class="wrap">
+<nav class="side" id="side" aria-label="สารบัญ">
+  <h4>เริ่มต้น</h4>
+  <a href="#overview">ภาพรวมข้อสอบ</a>
+  <a href="#plan">แผน 28 วัน</a>
+  <h4>สัปดาห์ 1</h4>
+  <a href="#l1">ผลตอบแทนและเงินตามเวลา</a>
+  <a href="#l2">ความเสี่ยงและพอร์ต</a>
+  <a href="#l3">CAPM และการวัดผล</a>
+  <a href="#l4">อัตราส่วนการเงิน</a>
+  <h4>สัปดาห์ 2</h4>
+  <a href="#l5">ตราสารทุน</a>
+  <a href="#l6">วอร์แรนท์และ DW</a>
+  <a href="#l7">กลไกตลาดหุ้น</a>
+  <a href="#l8">ตราสารหนี้</a>
+  <h4>สัปดาห์ 3</h4>
+  <a href="#l9">กองทุนรวม</a>
+  <a href="#l10">จรรยาบรรณและกฎ</a>
+  <a href="#l11">การแนะนำที่เหมาะสม</a>
+  <h4>ทวนก่อนสอบ</h4>
+  <a href="#numbers">ตัวเลขที่ต้องจำ</a>
+  <a href="#formulas">สรุปสูตร</a>
+  <a href="#glossary">คำศัพท์และนิยาม</a>
+  <a href="#quiz">แบบทดสอบย่อย</a>
+  <a href="#tips">เทคนิคทำข้อสอบ</a>
+</nav>
+
+<main>
+
+<!-- ===== OVERVIEW ===== -->
+<section class="blk" id="overview">
+  <div class="sec-head"><h2>ภาพรวมข้อสอบ</h2></div>
+  <div class="simple">
+    <p>ข้อสอบ IC Plain เหมือน "ใบขับขี่" ของคนที่จะแนะนำการลงทุนให้คนอื่น ต้องรู้ 3 เรื่อง คือ <b>เงินทำงานยังไง</b>, <b>ต้องประพฤติตัวยังไง</b> และ <b>สินค้าลงทุนแต่ละแบบเป็นยังไง</b></p>
+    <p>ต้องได้คะแนน 7 ใน 10 ขึ้นไป และข้อเรื่อง "มารยาท/ความซื่อสัตย์" ก็ต้องได้ 7 ใน 10 แยกด้วย ถึงคำนวณเก่งมาก แต่ถ้าหมวดนี้ตก ก็ไม่ผ่าน</p>
+  </div>
+  <div class="detail">
+    <p>ข้อสอบปรนัยประมาณ 100 ข้อ เวลาประมาณ 2 ชั่วโมงครึ่ง ครอบคลุม 3 หมวด เกณฑ์ผ่านคือคะแนนรวม ≥ 70% <b>และ</b> หมวดจรรยาบรรณ ≥ 70% (ตรวจสอบจำนวนข้อ เวลา และเกณฑ์ล่าสุดกับ ATI หรือ SET ก่อนสมัครสอบ)</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>ชุดฝึก</th><th>หัวข้อ</th><th>ข้อ</th><th>หมวดสอบจริง</th><th>ลักษณะ</th><th>บทเรียน</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>จรรยาบรรณ / กฎระเบียบ / การแนะนำที่เหมาะสม</td><td>33</td><td>หมวด 2</td><td>หลักการ + จำเกณฑ์ตัวเลข</td><td><a href="#l10">บท 10–11</a></td></tr>
+      <tr><td>2</td><td>คำนวณ (ผลตอบแทน ความเสี่ยง มูลค่า NAV)</td><td>39</td><td>หมวด 1 + 3</td><td>ใช้สูตร ~15 สูตร</td><td><a href="#l1">บท 1–4</a></td></tr>
+      <tr><td>3</td><td>กองทุนรวม</td><td>27</td><td>หมวด 3</td><td>ประเภทกองทุน + NAV/TER</td><td><a href="#l9">บท 9</a></td></tr>
+      <tr><td>4</td><td>ตราสารทุน</td><td>26</td><td>หมวด 3</td><td>กลไกตลาด + DDM/PER/PBV</td><td><a href="#l5">บท 5–7</a></td></tr>
+      <tr><td>5</td><td>ตราสารหนี้</td><td>27</td><td>หมวด 3</td><td>ดูเรชัน + มูลค่า/current yield</td><td><a href="#l8">บท 8</a></td></tr>
+    </tbody>
+  </table></div>
+  <div class="key"><b>ข้อสอบยอดนิยม</b> ข้อคำนวณเดียวกันออกซ้ำทั้งชุดคำนวณและชุดเนื้อหา เช่น มูลค่าเวลาวอร์แรนท์ กำไรขาดทุนวอร์แรนท์ มูลค่าหุ้นกู้ NAV ต่อหน่วย ผลตอบแทนกองทุน และ TER ข้อกลุ่มนี้ต้องทำได้ครบทุกข้อ</div>
+</section>
+
+<!-- ===== PLAN ===== -->
+<section class="blk" id="plan">
+  <div class="sec-head"><h2>แผนเรียน 28 วัน</h2><span class="muted">วันละ 1.5–2 ชั่วโมง</span></div>
+  <p class="intro">เรียนเนื้อหา → ทำแบบฝึกหัดทันที → ตรวจเฉลย → จดข้อผิด → ทวนซ้ำทุก 3 วัน ติ๊กวันที่ทำเสร็จเพื่อดูความคืบหน้า</p>
+  <div class="progress" aria-hidden="true"><i id="progBar"></i></div>
+  <p class="muted" id="progText">เรียนแล้ว 0 จาก 28 วัน</p>
+  <div class="tabs" role="tablist" id="weekTabs"></div>
+  <ul class="days" id="dayList"></ul>
+  <div class="duo">
+    <div class="g"><h4>สมุดข้อผิด: จด 3 บรรทัดทุกครั้งที่ผิด</h4>
+      <p>1) โจทย์ถามอะไร<br>2) ผิดเพราะอะไร (จำสูตรผิด / อ่านโจทย์พลาด / ไม่รู้เนื้อหา / หลงกับดัก "ไม่ถูกต้อง")<br>3) หลักที่ถูกคืออะไร</p>
+      <p class="muted">ข้อที่ผิดซ้ำ 2 รอบ คือจุดอ่อนจริง ให้กลับไปอ่านบทนั้นใหม่</p></div>
+    <div class="bl"><h4>เกณฑ์ความพร้อมก่อนไปสอบ</h4>
+      <p>ทำแบบฝึกหัดรวมได้ <b>≥ 85%</b> และหมวดจรรยาบรรณ <b>≥ 85%</b></p>
+      <p class="muted">ตั้งเป้าสูงกว่าเกณฑ์จริง 15% เผื่อข้อสอบที่ไม่เคยเห็น</p></div>
+  </div>
+</section>
+
+<!-- ===== L1 ===== -->
+<section class="blk" id="l1">
+  <div class="sec-head"><span class="wk">สัปดาห์ 1 วัน 1–2</span><h2>บท 1 ผลตอบแทนและมูลค่าเงินตามเวลา</h2></div>
+  <div class="simple">
+    <p>ซื้อเลี้ยงไก่ตัวละ 50 บาท ขายได้ 55 บาท แถมระหว่างเลี้ยงได้ไข่ขาย 2 บาท รวมได้กำไร 7 บาท จากเงินที่ลงไป 50 บาท = กำไร 14% นั่นแหละคือ <b>ผลตอบแทน</b></p>
+    <p>แต่ถ้าปีนี้ของแพงขึ้น 3% (เงินเฟ้อ) กำไรที่ "ซื้อของได้จริง" ก็จะลดลงประมาณ 3% ด้วย</p>
+    <p><b>มูลค่าเงินตามเวลา</b>: เงินฝากที่ได้ดอกเบี้ยทบต้น เหมือนก้อนหิมะกลิ้งลงเขา ยิ่งนานยิ่งก้อนใหญ่ เพราะดอกเบี้ยก็ออกดอกต่อได้</p>
+  </div>
+  <div class="detail">
+    <ul>
+      <li><b>HPR (Holding Period Return)</b> = (ราคาขาย − ราคาซื้อ + ปันผล) ÷ ราคาซื้อ</li>
+      <li><b>ผลตอบแทนที่แท้จริง</b> ≈ ผลตอบแทนที่เป็นตัวเงิน − เงินเฟ้อ (สูตรแม่นยำ: (1+r)/(1+i) − 1) ข้อสอบมักใช้แบบประมาณ</li>
+      <li><b>FV</b> = PV × (1+r)ⁿ และ <b>PV</b> = FV ÷ (1+r)ⁿ</li>
+      <li><b>APR vs EAR</b>: APR คืออัตราที่ประกาศ EAR = (1 + APR/m)ᵐ − 1 ยิ่งทบต้นบ่อย (m มาก) EAR ยิ่งสูง ขณะที่ APR เท่าเดิม</li>
+      <li><b>ค่าเฉลี่ยเรขาคณิต (GM)</b> = ⁿ√[(1+r₁)(1+r₂)…] − 1 ใช้วัดผลตอบแทนเฉลี่ยทบต้นหลายปี จะต่ำกว่าหรือเท่ากับค่าเฉลี่ยเลขคณิตเสมอ</li>
+    </ul>
+  </div>
+  <div class="ex"><h4>ตัวอย่าง 1: HPR และผลตอบแทนที่แท้จริง</h4><div class="b calc-line">
+    ซื้อหุ้น 50 บาท ขาย 55 บาท ได้ปันผล 2 บาท เงินเฟ้อ 3%<br>
+    HPR = (55 − 50 + 2) ÷ 50 = 7 ÷ 50 = <b>14%</b><br>
+    ผลตอบแทนที่แท้จริง ≈ 14% − 3% = <b>11%</b><br>
+    <span class="ans">ถ้าโจทย์ให้ผลตอบแทน 8% เงินเฟ้อ 3% → ประมาณ 5% (สูตรแม่นยำได้ 4.85%)</span>
+  </div></div>
+  <div class="ex"><h4>ตัวอย่าง 2: เงินทบต้นและ EAR</h4><div class="b calc-line">
+    ฝาก 100,000 บาท ดอกเบี้ย 5% ต่อปี 3 ปี → FV = 100,000 × 1.05³ = <b>115,762.50 บาท</b><br>
+    APR 12% ทบต้นรายเดือน → EAR = (1 + 0.12/12)¹² − 1 = <b>12.68%</b> (สูงกว่า 12%)
+  </div></div>
+  <div class="ex"><h4>ตัวอย่าง 3: ทำไมต้องใช้ค่าเฉลี่ยเรขาคณิต</h4><div class="b calc-line">
+    ปีแรก +20% ปีที่สอง −10%<br>
+    เลขคณิต = (20 − 10) ÷ 2 = 5% ← ดูดีเกินจริง<br>
+    เรขาคณิต = √(1.20 × 0.90) − 1 = √1.08 − 1 = <b>3.92%</b><br>
+    <span class="simple" style="display:block;margin-top:8px">เงิน 100 บาท → 120 → 108 บาท จริง ๆ โตแค่ 8% ใน 2 ปี ไม่ใช่ 10%</span>
+  </div></div>
+  <div class="calc" id="fvCalc"><h4>ลองคำนวณ: เงินจะโตเท่าไร</h4>
+    <div class="fields">
+      <div><label for="fvPV">เงินต้น (บาท)</label><input id="fvPV" type="number" value="100000"></div>
+      <div><label for="fvR">ดอกเบี้ยต่อปี (%)</label><input id="fvR" type="number" value="5" step="0.1"></div>
+      <div><label for="fvN">จำนวนปี</label><input id="fvN" type="number" value="3"></div>
+      <div><label for="fvM">ทบต้นปีละกี่ครั้ง</label><input id="fvM" type="number" value="1"></div>
+    </div>
+    <div class="out" id="fvOut"></div>
+  </div>
+</section>
+
+<!-- ===== L2 ===== -->
+<section class="blk" id="l2">
+  <div class="sec-head"><span class="wk">สัปดาห์ 1 วัน 2–3</span><h2>บท 2 ความเสี่ยงและพอร์ตลงทุน</h2></div>
+  <div class="simple">
+    <p><b>ผลตอบแทนคาดหวัง</b> คือการเดาแบบมีหลัก ถ้าพรุ่งนี้แดดออกขายไอศกรีมได้เยอะ ฝนตกขายได้น้อย เราก็เอาโอกาสของแต่ละแบบมาคูณแล้วรวมกัน</p>
+    <p><b>ความเสี่ยง (SD)</b> คือผลลัพธ์ "เหวี่ยง" แค่ไหน รถไฟเหาะเหวี่ยงมาก ม้าหมุนเหวี่ยงน้อย</p>
+    <p><b>CV</b> บอกว่า "ได้ผลตอบแทน 1 หน่วย ต้องทนเหวี่ยงเท่าไร" ยิ่งน้อยยิ่งคุ้ม</p>
+    <p><b>กระจายการลงทุน</b> = ไม่ใส่ไข่ทุกฟองไว้ในตะกร้าใบเดียว ถ้าของสองอย่างไม่ขึ้นลงพร้อมกัน (สหสัมพันธ์ต่ำ) ตะกร้าจะปลอดภัยขึ้น</p>
+  </div>
+  <div class="detail">
+    <ul>
+      <li><b>E(R)</b> = Σ(ความน่าจะเป็น × ผลตอบแทน)</li>
+      <li><b>CV</b> = SD ÷ E(R) ใช้เปรียบเทียบสินทรัพย์ที่ผลตอบแทนต่างกัน ค่าต่ำกว่า = ความเสี่ยงต่อผลตอบแทนต่ำกว่า น่าลงทุนกว่า</li>
+      <li><b>ผลตอบแทนพอร์ต</b> Rp = Σ(wᵢ × Rᵢ) เป็นค่าเฉลี่ยถ่วงน้ำหนักเสมอ แต่ <b>SD ของพอร์ต</b> ไม่ใช่ค่าเฉลี่ยถ่วงน้ำหนัก (ยกเว้นสหสัมพันธ์ = +1) เพราะขึ้นกับสหสัมพันธ์</li>
+      <li><b>ค่าสหสัมพันธ์ (ρ)</b> อยู่ระหว่าง −1 ถึง +1 ยิ่งต่ำ ประโยชน์จากการกระจายยิ่งมาก ρ = −1 ลดความเสี่ยงได้มากที่สุด</li>
+      <li><b>ความเสี่ยงที่เป็นระบบ</b> (systematic / market risk) กระจายไม่ได้ วัดด้วยเบต้า; <b>ความเสี่ยงที่ไม่เป็นระบบ</b> (unsystematic / specific risk) ลดได้ด้วยการกระจาย</li>
+      <li><b>เบต้า (β)</b>: β = 1 เคลื่อนไหวเท่าตลาด, β &gt; 1 ผันผวนกว่าตลาด, β &lt; 1 ผันผวนน้อยกว่า; β ของพอร์ต = ค่าเฉลี่ยถ่วงน้ำหนักของ β หลักทรัพย์</li>
+    </ul>
+  </div>
+  <div class="ex"><h4>ตัวอย่าง: E(R), CV และพอร์ต</h4><div class="b calc-line">
+    <div class="tbl" style="margin-bottom:8px"><table><tr><th>สภาวะ</th><th>โอกาส</th><th>ผลตอบแทน</th><th>คูณกัน</th></tr>
+    <tr><td>เศรษฐกิจดี</td><td>0.3</td><td>20%</td><td>6.0%</td></tr>
+    <tr><td>ปกติ</td><td>0.5</td><td>10%</td><td>5.0%</td></tr>
+    <tr><td>ถดถอย</td><td>0.2</td><td>−5%</td><td>−1.0%</td></tr></table></div>
+    E(R) = 6 + 5 − 1 = <b>10%</b><br>
+    CV: หุ้น A (ผลตอบแทน 12%, SD 10%) = 0.83 ; หุ้น B (20%, SD 15%) = 0.75 → <span class="ans">เลือก B เพราะ CV ต่ำกว่า</span><br>
+    พอร์ต: หุ้น 60% ผลตอบแทน 10% + ตราสารหนี้ 40% ผลตอบแทน 5% → Rp = 6 + 2 = <b>8%</b>
+  </div></div>
+  <figure>
+    <svg viewBox="0 0 600 220" role="img" aria-label="กราฟเปรียบเทียบความเสี่ยงรวมลดลงเมื่อจำนวนหลักทรัพย์เพิ่ม จนเหลือแต่ความเสี่ยงที่เป็นระบบ">
+      <line x1="60" y1="180" x2="570" y2="180" stroke="#6B7280"/><line x1="60" y1="20" x2="60" y2="180" stroke="#6B7280"/>
+      <rect x="61" y="120" width="509" height="59" fill="#EFF6FF"/>
+      <path d="M70 30 C120 90 170 108 260 116 S450 120 565 120" fill="none" stroke="#16A34A" stroke-width="4"/>
+      <text x="300" y="155" font-size="15" fill="#2563EB" font-weight="700">ความเสี่ยงที่เป็นระบบ (กระจายไม่ได้)</text>
+      <text x="200" y="70" font-size="15" fill="#16A34A" font-weight="700">ความเสี่ยงที่ไม่เป็นระบบ ลดลงเรื่อย ๆ</text>
+      <text x="300" y="205" font-size="14" fill="#6B7280">จำนวนหลักทรัพย์ในพอร์ต →</text>
+      <text x="14" y="100" font-size="14" fill="#6B7280" transform="rotate(-90 22 100)">ความเสี่ยงรวม</text>
+    </svg>
+    <figcaption>ยิ่งถือหลักทรัพย์หลากหลาย ความเสี่ยงเฉพาะตัวยิ่งหายไป แต่ความเสี่ยงของตลาดทั้งระบบยังอยู่</figcaption>
+  </figure>
+</section>
+
+<!-- ===== L3 ===== -->
+<section class="blk" id="l3">
+  <div class="sec-head"><span class="wk">สัปดาห์ 1 วัน 4</span><h2>บท 3 CAPM และการวัดผลการลงทุน</h2></div>
+  <div class="simple">
+    <p>CAPM คือ "ราคาค่าเหนื่อย" ที่ควรได้ เริ่มจากดอกเบี้ยที่ได้แน่ ๆ (เช่นพันธบัตรรัฐบาล) แล้วบวกค่าเหนื่อยที่ยอมเสี่ยง ยิ่งหุ้นเหวี่ยงแรง (β สูง) ยิ่งต้องได้ค่าเหนื่อยมาก</p>
+    <p>ถ้าหุ้นน่าจะให้ผลตอบแทน <b>มากกว่า</b> ค่าเหนื่อยที่ควรได้ = ของดีราคาถูก (Underpriced) <b>ซื้อ</b></p>
+    <p>ถ้า <b>น้อยกว่า</b> = ของแพงเกินไป (Overpriced) <b>ขาย</b></p>
+  </div>
+  <div class="detail">
+    <ul>
+      <li><b>CAPM</b>: k = Rf + β(Rm − Rf) โดย (Rm − Rf) คือส่วนชดเชยความเสี่ยงตลาด และ β(Rm − Rf) คือส่วนชดเชยความเสี่ยงของหลักทรัพย์</li>
+      <li><b>SML</b> คือเส้นที่แสดง k ตาม β หลักทรัพย์ที่อยู่ <b>เหนือ</b>เส้น = Underpriced (ซื้อ) ใต้เส้น = Overpriced (ขาย)</li>
+      <li><b>Sharpe</b> = (Rp − Rf) ÷ SDp ใช้ความเสี่ยงรวม เหมาะกับพอร์ตที่ยังไม่กระจาย หรือเป็นพอร์ตทั้งหมดของผู้ลงทุน</li>
+      <li><b>Treynor</b> = (Rp − Rf) ÷ βp ใช้เฉพาะความเสี่ยงที่เป็นระบบ เหมาะกับพอร์ตที่กระจายดีแล้ว</li>
+      <li><b>Jensen's alpha</b> = Rp − [Rf + βp(Rm − Rf)] ค่าบวก = ผู้จัดการทำได้ดีกว่าที่ CAPM คาด</li>
+      <li>ถ้าความเสี่ยงที่ไม่เป็นระบบเพิ่มขึ้น (β เท่าเดิม): Sharpe <b>ลดลง</b> ส่วน Treynor <b>คงที่</b></li>
+    </ul>
+  </div>
+  <figure>
+    <svg viewBox="0 0 600 260" role="img" aria-label="เส้น SML แสดงหุ้น A อยู่เหนือเส้นคือ Underpriced และหุ้น B อยู่ใต้เส้นคือ Overpriced">
+      <line x1="60" y1="220" x2="570" y2="220" stroke="#6B7280"/><line x1="60" y1="20" x2="60" y2="220" stroke="#6B7280"/>
+      <line x1="60" y1="190" x2="560" y2="40" stroke="#16A34A" stroke-width="4"/>
+      <text x="470" y="40" font-size="16" font-weight="800" fill="#16A34A">SML</text>
+      <text x="20" y="194" font-size="14" fill="#6B7280">Rf</text>
+      <circle cx="260" cy="95" r="10" fill="#2563EB"/><text x="275" y="92" font-size="15" font-weight="700" fill="#2563EB">A เหนือเส้น = Underpriced → ซื้อ</text>
+      <circle cx="380" cy="140" r="10" fill="#DC2626"/><text x="395" y="160" font-size="15" font-weight="700" fill="#DC2626">B ใต้เส้น = Overpriced → ขาย</text>
+      <text x="300" y="248" font-size="14" fill="#6B7280">เบต้า (β) →</text>
+      <text x="14" y="120" font-size="14" fill="#6B7280" transform="rotate(-90 22 120)">ผลตอบแทน</text>
+    </svg>
+  </figure>
+  <div class="ex"><h4>ตัวอย่าง: CAPM และตัววัดผล</h4><div class="b calc-line">
+    Rf = 2%, Rm = 10%, β = 1.5 → k = 2 + 1.5 × (10 − 2) = <b>14%</b><br>
+    ถ้าคาดว่าหุ้นให้ 16% &gt; 14% → <span class="ans">Underpriced ควรซื้อ</span><br><br>
+    กองทุนได้ Rp = 12%, SD = 20%, β = 1.25 (Rf 2%, Rm 10%)<br>
+    Sharpe = (12 − 2) ÷ 20 = <b>0.50</b> ; Treynor = (12 − 2) ÷ 1.25 = <b>8%</b><br>
+    Jensen = 12 − [2 + 1.25 × 8] = 12 − 12 = <b>0%</b> (ทำได้พอดีกับที่ควรได้)
+  </div></div>
+  <div class="calc"><h4>ลองคำนวณ: CAPM ซื้อหรือขาย</h4>
+    <div class="fields">
+      <div><label for="cRf">Rf (%)</label><input id="cRf" type="number" value="2" step="0.1"></div>
+      <div><label for="cRm">Rm (%)</label><input id="cRm" type="number" value="10" step="0.1"></div>
+      <div><label for="cB">เบต้า</label><input id="cB" type="number" value="1.5" step="0.05"></div>
+      <div><label for="cE">ผลตอบแทนคาดหวัง (%)</label><input id="cE" type="number" value="16" step="0.1"></div>
+    </div>
+    <div class="out" id="capmOut"></div>
+  </div>
+</section>
+
+<!-- ===== L4 ===== -->
+<section class="blk" id="l4">
+  <div class="sec-head"><span class="wk">สัปดาห์ 1 วัน 5</span><h2>บท 4 อัตราส่วนทางการเงิน</h2></div>
+  <div class="simple">
+    <p>เปิดร้านน้ำปั่น ลงเงินของตัวเอง 100 บาท ปีนี้กำไร 20 บาท แปลว่าเงินของเราทำกำไรได้ 20% (<b>ROE</b>)</p>
+    <p>ถ้ายืมเพื่อนมาอีก 150 บาท หนี้มากกว่าเงินตัวเอง 1.5 เท่า (<b>D/E</b>) ยิ่งตัวเลขนี้สูง ร้านยิ่งมีภาระต้องใช้คืน เสี่ยงมากขึ้น</p>
+  </div>
+  <div class="detail">
+    <div class="tbl"><table>
+      <tr><th>อัตราส่วน</th><th>สูตร</th><th>ตีความ</th></tr>
+      <tr><td>ROA</td><td>กำไรสุทธิ ÷ สินทรัพย์รวม</td><td>ใช้สินทรัพย์สร้างกำไรได้ดีแค่ไหน</td></tr>
+      <tr><td>ROE</td><td>กำไรสุทธิ ÷ ส่วนของผู้ถือหุ้น</td><td>ผลตอบแทนต่อเงินของเจ้าของ ยิ่งสูงยิ่งดี</td></tr>
+      <tr><td>D/E</td><td>หนี้สินรวม ÷ ส่วนของผู้ถือหุ้น</td><td>ต่ำ = ความเสี่ยงทางการเงินต่ำ</td></tr>
+      <tr><td>Current ratio</td><td>สินทรัพย์หมุนเวียน ÷ หนี้สินหมุนเวียน</td><td>สภาพคล่องระยะสั้น มากกว่า 1 = มีของพอจ่ายหนี้ระยะสั้น</td></tr>
+      <tr><td>EPS</td><td>กำไรสุทธิ ÷ จำนวนหุ้น</td><td>กำไรต่อหุ้น ใช้กับ PER</td></tr>
+      <tr><td>BV ต่อหุ้น</td><td>ส่วนของผู้ถือหุ้น ÷ จำนวนหุ้น</td><td>มูลค่าทางบัญชีต่อหุ้น ใช้กับ PBV</td></tr>
+    </table></div>
+    <p>ความสัมพันธ์ที่ควรรู้: สินทรัพย์ = หนี้สิน + ส่วนของผู้ถือหุ้น</p>
+  </div>
+  <div class="ex"><h4>ตัวอย่าง</h4><div class="b calc-line">
+    กำไรสุทธิ 20 ล้าน, ส่วนผู้ถือหุ้น 100 ล้าน, หนี้สิน 150 ล้าน<br>
+    สินทรัพย์ = 150 + 100 = 250 ล้าน → ROA = 20 ÷ 250 = <b>8%</b><br>
+    ROE = 20 ÷ 100 = <b>20%</b> ; D/E = 150 ÷ 100 = <b>1.5 เท่า</b>
+  </div></div>
+</section>
+
+<!-- ===== L5 ===== -->
+<section class="blk" id="l5">
+  <div class="sec-head"><span class="wk w2">สัปดาห์ 2 วัน 8–9</span><h2>บท 5 ตราสารทุนและการประเมินมูลค่าหุ้น</h2></div>
+  <div class="simple">
+    <p>ซื้อหุ้น = เป็น <b>เจ้าของร่วม</b> ของบริษัท บริษัทกำไรก็แบ่งเงินให้ (ปันผล) บริษัทโตหุ้นก็ขึ้น</p>
+    <p>หุ้นมีหลายนิสัย: <b>Blue chip</b> คือบริษัทใหญ่มั่นคง <b>Growth</b> คือเด็กที่กำลังโตเร็ว <b>Cyclical</b> ขึ้นลงตามฤดูเศรษฐกิจ <b>Defensive</b> คนต้องใช้ทุกวัน เช่น อาหาร ไฟฟ้า เศรษฐกิจแย่ก็ยังขายได้</p>
+    <p>ประเมินราคา = หา "ราคาที่ควรเป็น" แล้วเทียบกับราคาในตลาด ถ้าตลาดขายถูกกว่า = ซื้อ</p>
+  </div>
+  <div class="detail">
+    <div class="duo">
+      <div class="g"><h4>หุ้นสามัญ</h4>มีสิทธิออกเสียง ได้ปันผลหลังหุ้นบุริมสิทธิ ได้คืนเงินเป็นลำดับสุดท้ายเมื่อเลิกกิจการ</div>
+      <div class="bl"><h4>หุ้นบุริมสิทธิ</h4>ได้ปันผลและคืนทุนก่อนหุ้นสามัญ ปันผลมักกำหนดอัตรา โดยทั่วไปไม่มีสิทธิออกเสียง</div>
+    </div>
+    <ul>
+      <li><b>DDM (Gordon)</b>: P₀ = D₁ ÷ (k − g) โดย D₁ = D₀ × (1 + g) ใช้ได้เมื่อ k &gt; g</li>
+      <li><b>PER</b>: ราคาเหมาะสม = PER ที่เหมาะสม × EPS</li>
+      <li><b>PBV</b>: ราคาเหมาะสม = PBV ที่เหมาะสม × BV ต่อหุ้น</li>
+      <li>ราคาตลาด &lt; ราคาเหมาะสม → Underpriced ซื้อ ; ราคาตลาด &gt; ราคาเหมาะสม → Overpriced ขาย</li>
+      <li><b>เข้าจดทะเบียน SET</b>: ทุนชำระแล้ว ≥ 300 ล้านบาท (หลังเสนอขาย)</li>
+      <li><b>Silent period</b>: ผู้ถือหุ้นรายใหญ่ (strategic shareholders) ห้ามขายหุ้น 55% ของที่ถือเป็นเวลา 1 ปี</li>
+    </ul>
+  </div>
+  <div class="trap"><b>จุดที่พลาดบ่อยที่สุด</b> โจทย์ให้ "ปันผลที่เพิ่งจ่าย" (D₀) ต้องคูณ (1+g) ก่อนเสมอ ถ้าโจทย์ให้ "ปันผลที่คาดว่าจะจ่ายปีหน้า" คือ D₁ ใช้ได้เลย</div>
+  <div class="ex"><h4>ตัวอย่าง: DDM, PER, PBV</h4><div class="b calc-line">
+    <b>DDM</b>: เพิ่งจ่ายปันผล 2 บาท, g = 5%, k = 10%<br>
+    D₁ = 2 × 1.05 = 2.10 → P = 2.10 ÷ (0.10 − 0.05) = <b>42 บาท</b><br>
+    ราคาตลาด 38 บาท &lt; 42 → <span class="ans">Underpriced ซื้อ</span><br><br>
+    <b>PER</b>: กำไร 50 ล้าน, 10 ล้านหุ้น → EPS = 5 บาท, PER เหมาะสม 12 → <b>60 บาท</b><br>
+    <b>PBV</b>: ส่วนผู้ถือหุ้น 200 ล้าน, 10 ล้านหุ้น → BV = 20 บาท, PBV เหมาะสม 1.5 → <b>30 บาท</b>
+  </div></div>
+  <div class="calc"><h4>ลองคำนวณ: DDM</h4>
+    <div class="fields">
+      <div><label for="dD0">ปันผลล่าสุด D₀ (บาท)</label><input id="dD0" type="number" value="2" step="0.01"></div>
+      <div><label for="dG">อัตราเติบโต g (%)</label><input id="dG" type="number" value="5" step="0.1"></div>
+      <div><label for="dK">ผลตอบแทนที่ต้องการ k (%)</label><input id="dK" type="number" value="10" step="0.1"></div>
+      <div><label for="dP">ราคาตลาด (บาท)</label><input id="dP" type="number" value="38" step="0.25"></div>
+    </div>
+    <div class="out" id="ddmOut"></div>
+  </div>
+</section>
+
+<!-- ===== L6 ===== -->
+<section class="blk" id="l6">
+  <div class="sec-head"><span class="wk w2">สัปดาห์ 2 วัน 10</span><h2>บท 6 วอร์แรนท์ DW และ NVDR</h2></div>
+  <div class="simple">
+    <p><b>วอร์แรนท์</b> เหมือน "คูปองจองซื้อ" ที่เขียนว่า ซื้อหุ้นได้ในราคา 10 บาท ถ้าหุ้นตอนนี้ราคา 12 บาท คูปองนี้มีค่าแน่ ๆ 2 บาท (มูลค่าที่แท้จริง)</p>
+    <p>แต่คนยอมจ่ายซื้อคูปองนี้ 3 บาท เพราะ "หวังว่า" ก่อนหมดอายุหุ้นจะขึ้นอีก ส่วนที่เกินมา 1 บาท เรียกว่า <b>มูลค่าเวลา</b> ยิ่งเหลือเวลานาน ความหวังยิ่งมาก</p>
+  </div>
+  <div class="detail">
+    <ul>
+      <li><b>วอร์แรนท์</b> ออกโดยบริษัทเจ้าของหุ้น ใช้สิทธิแล้วบริษัทออกหุ้นใหม่ (เกิด dilution) ; <b>DW (Derivative Warrant)</b> ออกโดยบุคคลอื่น เช่น บริษัทหลักทรัพย์ มีผู้ดูแลสภาพคล่อง (market maker) และมีทั้ง call และ put</li>
+      <li>มูลค่าที่แท้จริง (call) = max(ราคาหุ้น − ราคาใช้สิทธิ, 0) ; มูลค่าเวลา = ราคาวอร์แรนท์ − มูลค่าที่แท้จริง</li>
+      <li>ITM (ราคาหุ้น &gt; ราคาใช้สิทธิ), ATM (เท่ากัน), OTM (ต่ำกว่า)</li>
+      <li><b>Gearing</b> = ราคาหุ้น ÷ (ราคาวอร์แรนท์ × อัตราใช้สิทธิ) บอกว่าลงทุนผ่านวอร์แรนท์ได้ "ทวีคูณ" กี่เท่า</li>
+      <li><b>ค่าความไว (delta)</b>: ราคาหุ้นเปลี่ยน 1 บาท ราคาวอร์แรนท์เปลี่ยนเท่าไร กำไร/ขาดทุน ≈ Δราคาหุ้น × delta × จำนวนหน่วย</li>
+      <li><b>ปัจจัยที่ทำให้ call warrant ราคาสูงขึ้น</b>: ราคาหุ้น↑ ความผันผวน↑ อายุคงเหลือ↑ ดอกเบี้ย↑ ราคาใช้สิทธิ↓ ปันผล↓</li>
+      <li><b>NVDR</b>: ได้สิทธิประโยชน์ทางการเงินเหมือนถือหุ้น (ปันผล สิทธิจองซื้อ) แต่ <b>ไม่มีสิทธิออกเสียง</b> ช่วยให้ต่างชาติลงทุนได้แม้ foreign limit เต็ม</li>
+    </ul>
+  </div>
+  <figure>
+    <svg viewBox="0 0 600 150" role="img" aria-label="แท่งราคาวอร์แรนท์ 3 บาท แบ่งเป็นมูลค่าที่แท้จริง 2 บาทและมูลค่าเวลา 1 บาท">
+      <text x="20" y="30" font-size="16" font-weight="700" fill="#0F172A">ราคาวอร์แรนท์ 3 บาท</text>
+      <rect x="20" y="45" width="360" height="54" rx="10" fill="#16A34A"/>
+      <rect x="380" y="45" width="180" height="54" rx="10" fill="#FACC15"/>
+      <rect x="370" y="45" width="20" height="54" fill="#16A34A"/>
+      <text x="200" y="78" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">มูลค่าที่แท้จริง 2 (12 − 10)</text>
+      <text x="470" y="78" text-anchor="middle" font-size="16" font-weight="700" fill="#0F172A">มูลค่าเวลา 1</text>
+      <text x="20" y="130" font-size="14" fill="#6B7280">ใกล้หมดอายุ มูลค่าเวลา (สีเหลือง) จะหดลงจนเป็น 0</text>
+    </svg>
+  </figure>
+  <div class="ex"><h4>ตัวอย่าง: มูลค่าเวลาและกำไร (อัตราใช้สิทธิ 1:1)</h4><div class="b calc-line">
+    หุ้นราคา 12 บาท ราคาใช้สิทธิ 10 บาท วอร์แรนท์ราคา 3 บาท<br>
+    มูลค่าที่แท้จริง = 12 − 10 = 2 ; <span class="ans">มูลค่าเวลา = 3 − 2 = 1 บาท</span><br>
+    Gearing = 12 ÷ 3 = <b>4 เท่า</b><br><br>
+    ถือ DW 10,000 หน่วย delta 0.5 หุ้นขึ้น 2 บาท → กำไร ≈ 2 × 0.5 × 10,000 = <b>10,000 บาท</b>
+  </div></div>
+</section>
+
+<!-- ===== L7 ===== -->
+<section class="blk" id="l7">
+  <div class="sec-head"><span class="wk w2">สัปดาห์ 2 วัน 11</span><h2>บท 7 กลไกตลาดหุ้น</h2></div>
+  <div class="simple">
+    <p><b>การจับคู่ซื้อขาย</b> เหมือนต่อคิวซื้อขนม คนที่ให้ราคาดีที่สุดได้ก่อน ถ้าราคาเท่ากัน ใครมาก่อนได้ก่อน</p>
+    <p><b>Circuit breaker</b> คือเบรกฉุกเฉิน ถ้าตลาดร่วงแรงเกินไป ตลาดจะหยุดพักให้ทุกคนตั้งสติ</p>
+    <p><b>Margin</b> คือยืมเงินโบรกเกอร์มาซื้อหุ้น ถ้าหุ้นตกจนหลักประกันเหลือน้อย โบรกเกอร์จะทวงให้เติมเงิน ถ้ายังน้อยลงอีกจะขายหุ้นทิ้งให้เลย</p>
+  </div>
+  <div class="detail">
+    <ul>
+      <li><b>AOM (Automatic Order Matching)</b> จับคู่แบบ <b>price then time priority</b> ราคาดีกว่าได้ก่อน ราคาเท่ากันใครส่งก่อนได้ก่อน</li>
+      <li><b>เครื่องหมาย</b>: XD ผู้ซื้อไม่ได้สิทธิรับปันผล ; XR ไม่ได้สิทธิจองซื้อหุ้นเพิ่มทุน ; SP ห้ามซื้อขายชั่วคราว ; H หยุดพักการซื้อขายชั่วคราว (ไม่เกิน 1 รอบการซื้อขาย) ; NP ไม่ปฏิบัติตามข้อกำหนดเรื่องเปิดเผยข้อมูล ; C ให้ระวังการซื้อขาย</li>
+      <li><b>Cash balance</b>: ต้องวางเงินสดเต็มจำนวนก่อนซื้อ ใช้กับหุ้นที่มีการซื้อขายผิดปกติ</li>
+      <li><b>Margin</b>: เรียกหลักประกันเพิ่มเมื่อ &lt; 35% บังคับขายเมื่อ &lt; 25%</li>
+      <li><b>Circuit breaker</b> ขั้น 1: SET index ลดลง 8% หยุด 30 นาที ; ขั้น 2: 15% ; ขั้น 3: 20% (ตรวจสอบระยะเวลาหยุดของขั้น 2–3 กับ SET)</li>
+      <li><b>การชำระราคาหุ้น</b>: T+2</li>
+      <li><b>ดัชนี</b>: SET Index ถ่วงน้ำหนักด้วยมูลค่าตลาด ; SET50/SET100 คำนวณจากหุ้นใหญ่สภาพคล่องสูงตามจำนวนที่ระบุ</li>
+    </ul>
+  </div>
+  <div class="ex"><h4>ตัวอย่าง: ใครได้จับคู่ก่อน</h4><div class="b calc-line">
+    มีคำสั่งขายรออยู่ที่ 20.00 บาท<br>
+    คนแรกส่งซื้อ 19.90 บาท เวลา 10:00 ; คนที่สองส่งซื้อ 20.00 บาท เวลา 10:05 ; คนที่สามส่งซื้อ 20.00 บาท เวลา 10:06<br>
+    <span class="ans">คนที่สองได้ก่อน (ราคาดีกว่าคนแรก และมาก่อนคนที่สาม)</span>
+  </div></div>
+</section>
+
+<!-- ===== L8 ===== -->
+<section class="blk" id="l8">
+  <div class="sec-head"><span class="wk w2">สัปดาห์ 2 วัน 12–14</span><h2>บท 8 ตราสารหนี้</h2></div>
+  <div class="simple">
+    <p>ซื้อหุ้นกู้ = <b>ให้บริษัทยืมเงิน</b> บริษัทสัญญาว่าจะจ่ายดอกเบี้ยเป็นงวด ๆ แล้วคืนเงินต้นตอนครบกำหนด</p>
+    <p><b>ไม้กระดก</b>: ดอกเบี้ยในตลาดขึ้น ราคาหุ้นกู้เก่าจะลง เพราะใครจะอยากได้หุ้นกู้ดอกน้อยในราคาเต็ม ในเมื่อของใหม่ให้ดอกมากกว่า</p>
+    <p><b>Zero coupon</b> เหมือนซื้อบัตรของขวัญราคาลด จ่าย 820 บาทวันนี้ อีก 5 ปีได้ 1,000 บาท ไม่มีดอกเบี้ยระหว่างทาง</p>
+  </div>
+  <div class="detail">
+    <ul>
+      <li><b>องค์ประกอบ</b>: มูลค่าที่ตราไว้ (par) อัตราดอกเบี้ยหน้าตั๋ว (coupon) วันครบกำหนด ผู้ออก</li>
+      <li><b>ลำดับสิทธิเรียกร้อง</b>: หุ้นกู้มีประกัน → ไม่ด้อยสิทธิ (senior) → ด้อยสิทธิ (subordinated) → หุ้นบุริมสิทธิ → หุ้นสามัญ</li>
+      <li><b>Amortizing bond</b> ทยอยคืนเงินต้นพร้อมดอกเบี้ยทุกงวด</li>
+      <li><b>Callable</b> ผู้ออกมีสิทธิไถ่ถอนก่อน ใช้สิทธิเมื่อดอกเบี้ยตลาดลด จึงต้องให้คูปองสูงกว่าปกติ ; <b>Puttable</b> ผู้ถือมีสิทธิขายคืน ใช้เมื่อดอกเบี้ยขึ้น คูปองจึงต่ำกว่าปกติ ; <b>Convertible</b> แปลงเป็นหุ้นสามัญได้</li>
+      <li><b>Current yield</b> = ดอกเบี้ยต่อปี ÷ ราคาตลาด</li>
+      <li>คูปอง &gt; k → ราคา <b>Premium</b> ; คูปอง &lt; k → <b>Discount</b> ; เท่ากัน → Par</li>
+      <li><b>Yield curve</b> ปกติชันขึ้น (ระยะยาวให้ผลตอบแทนสูงกว่า) ; หัวกลับ (inverted) มักสะท้อนความกังวลเศรษฐกิจถดถอย</li>
+      <li><b>ดูเรชัน</b> วัดความอ่อนไหวของราคาต่อดอกเบี้ย สูงเมื่อ อายุคงเหลือยาว คูปองต่ำ YTM ต่ำ ; zero coupon มีดูเรชันเท่ากับอายุคงเหลือ</li>
+      <li><b>Credit rating</b>: Investment grade คือ BBB- (TRIS/S&amp;P) หรือ Baa3 (Moody's) ขึ้นไป ต่ำกว่านั้นคือ non-investment grade (high yield)</li>
+      <li><b>Reinvestment risk</b>: เสี่ยงที่ดอกเบี้ยที่ได้รับจะนำไปลงทุนต่อได้ในอัตราต่ำลง zero coupon ไม่มีความเสี่ยงนี้</li>
+      <li>ตลาดรองตราสารหนี้ส่วนใหญ่ซื้อขายนอกตลาด (OTC) ชำระราคา T+2</li>
+    </ul>
+  </div>
+  <figure>
+    <svg viewBox="0 0 600 190" role="img" aria-label="ไม้กระดก เมื่อดอกเบี้ยขึ้น ราคาตราสารหนี้ลง">
+      <polygon points="300,150 270,180 330,180" fill="#0F172A"/>
+      <g transform="rotate(-14 300 150)">
+        <rect x="90" y="140" width="420" height="16" rx="8" fill="#16A34A"/>
+        <rect x="120" y="96" width="110" height="44" rx="10" fill="#2563EB"/>
+        <text x="175" y="124" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">ดอกเบี้ย ↑</text>
+        <rect x="370" y="96" width="120" height="44" rx="10" fill="#FACC15"/>
+        <text x="430" y="124" text-anchor="middle" font-size="16" font-weight="700" fill="#0F172A">ราคาหุ้นกู้ ↓</text>
+      </g>
+      <text x="20" y="30" font-size="15" fill="#6B7280">ภาพกลับด้านกัน: ดอกเบี้ยลง ราคาตราสารหนี้ขึ้น</text>
+    </svg>
+  </figure>
+  <div class="ex"><h4>ตัวอย่าง: ราคาหุ้นกู้จ่ายดอกเบี้ยครึ่งปี</h4><div class="b calc-line">
+    Par 1,000 บาท คูปอง 5% ต่อปี จ่ายปีละ 2 ครั้ง อายุ 3 ปี อัตราผลตอบแทนที่ต้องการ 6%<br>
+    ดอกเบี้ยต่องวด = 50 ÷ 2 = 25 ; อัตราคิดลดต่องวด = 3% ; จำนวนงวด = 6<br>
+    PV ดอกเบี้ย = 25 × [1 − 1.03⁻⁶] ÷ 0.03 = 25 × 5.4172 = 135.43<br>
+    PV เงินต้น = 1,000 ÷ 1.03⁶ = 837.48<br>
+    <span class="ans">ราคา = 972.91 บาท (Discount เพราะคูปอง 5% &lt; 6%)</span><br>
+    Current yield = 50 ÷ 972.91 = <b>5.14%</b><br><br>
+    <b>Zero coupon</b> par 1,000 อายุ 5 ปี k = 4% (ทบครึ่งปี) → 1,000 ÷ 1.02¹⁰ = <b>820.35 บาท</b>
+  </div></div>
+  <div class="calc"><h4>ลองคำนวณ: ราคาหุ้นกู้</h4>
+    <div class="fields">
+      <div><label for="bPar">Par (บาท)</label><input id="bPar" type="number" value="1000"></div>
+      <div><label for="bC">คูปองต่อปี (%)</label><input id="bC" type="number" value="5" step="0.1"></div>
+      <div><label for="bK">k ต่อปี (%)</label><input id="bK" type="number" value="6" step="0.1"></div>
+      <div><label for="bN">อายุ (ปี)</label><input id="bN" type="number" value="3"></div>
+      <div><label for="bF">จ่ายดอกปีละ (ครั้ง)</label><input id="bF" type="number" value="2"></div>
+    </div>
+    <div class="out" id="bondOut"></div>
+  </div>
+</section>
+
+<!-- ===== L9 ===== -->
+<section class="blk" id="l9">
+  <div class="sec-head"><span class="wk w3">สัปดาห์ 3 วัน 15–18</span><h2>บท 9 กองทุนรวม</h2></div>
+  <div class="simple">
+    <p>กองทุนรวม เหมือนเพื่อนหลายคน <b>ลงขันกัน</b> แล้วจ้างเชฟมืออาชีพ (บลจ.) ไปซื้อวัตถุดิบ มีคนคอยดูแลกระเป๋าเงินไม่ให้ใครโกง (ผู้ดูแลผลประโยชน์) และมีคนจดว่าใครใส่เงินไปกี่ส่วน (นายทะเบียน)</p>
+    <p><b>NAV ต่อหน่วย</b> คือ "ราคาต่อส่วน" เอาของทั้งหมดในกอง หักหนี้ แล้วหารด้วยจำนวนส่วน</p>
+    <p>ตอนซื้อเราจ่ายแพงกว่านิดหน่อย (ราคาขาย) ตอนขายคืนได้น้อยกว่านิดหน่อย (ราคารับซื้อคืน) เพราะมีค่าธรรมเนียม</p>
+  </div>
+  <div class="detail">
+    <h4>โครงสร้างและประเภท</h4>
+    <ul>
+      <li><b>บลจ.</b> บริหารกองทุน ; <b>ผู้ดูแลผลประโยชน์ (trustee)</b> เก็บรักษาทรัพย์สินและดูแลให้บริหารตามโครงการ ; <b>นายทะเบียน</b> บันทึกรายชื่อและจำนวนหน่วยของผู้ถือหน่วย</li>
+      <li><b>Active</b> พยายามชนะดัชนี ค่าธรรมเนียมสูงกว่า ; <b>Passive</b> ตามดัชนี ค่าธรรมเนียมต่ำ วัดด้วย tracking error</li>
+      <li><b>กองเปิด</b> ซื้อขายกับ บลจ. ได้ตามรอบ จำนวนหน่วยเปลี่ยนได้ ; <b>กองปิด</b> ขายครั้งเดียว ขายคืน บลจ. ไม่ได้จนครบอายุ (มักจดทะเบียนในตลาด)</li>
+      <li><b>ETF</b> ซื้อขายในตลาดหลักทรัพย์ระหว่างวัน ; <b>Index fund</b> ตามดัชนี ; <b>Fund of Funds</b> ลงทุนในกองทุนอื่นหลายกอง ; <b>Feeder fund</b> ลงทุนในกองทุนหลัก (master fund) กองเดียวเป็นหลัก</li>
+      <li><b>กองทุนอสังหาฯ</b>: <b>Freehold</b> มีกรรมสิทธิ์ มีมูลค่าคงเหลือ ; <b>Leasehold</b> มีสิทธิเช่า มูลค่าลดลงจนเป็น 0 เมื่อสิ้นสัญญา ; กองทุนอสังหาฯ/REIT จ่ายปันผล ≥ 90% ของกำไรสุทธิ</li>
+      <li><b>Trigger fund</b> ขายคืนอัตโนมัติ/เลิกกองทุนเมื่อถึงผลตอบแทนเป้าหมาย ; <b>GMS</b> ลงทุนในหลายประเภทสินทรัพย์ปรับสัดส่วนได้ ; <b>Auto redemption</b> ขายคืนหน่วยอัตโนมัติแทนการจ่ายปันผล</li>
+    </ul>
+    <h4>การวัดผลและค่าใช้จ่าย</h4>
+    <ul>
+      <li>ผู้ลงทุน <b>ซื้อที่ราคาขาย (offer)</b> และ <b>ขายที่ราคารับซื้อคืน (bid)</b></li>
+      <li><b>Information ratio</b> = ผลตอบแทนส่วนเกินจาก benchmark ÷ tracking error ใช้กับกองทุนเชิงรุก</li>
+      <li><b>TER</b> = ค่าจัดการ + ค่าผู้ดูแลผลประโยชน์ + ค่านายทะเบียน + ค่าใช้จ่ายอื่นที่เรียกเก็บจากกองทุน ใช้อัตราที่เก็บจริง ไม่ใช่เพดาน และไม่รวมค่าธรรมเนียมขาย/รับซื้อคืน</li>
+      <li><b>Fund fact sheet</b> แสดงนโยบาย ความเสี่ยง (ระดับ 1–8) ค่าธรรมเนียม ผลการดำเนินงานย้อนหลัง</li>
+      <li><b>Core &amp; Satellite</b>: ส่วนหลักลงทุนมั่นคงระยะยาว ส่วนเสริมไว้หาโอกาสผลตอบแทนเพิ่ม ; <b>DCA</b> ลงทุนเท่ากันทุกงวด เฉลี่ยต้นทุน</li>
+    </ul>
+  </div>
+  <figure>
+    <svg viewBox="0 0 600 170" role="img" aria-label="สมการ NAV ต่อหน่วย">
+      <rect x="10" y="20" width="120" height="50" rx="10" fill="#16A34A"/><text x="70" y="50" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">ทรัพย์สิน 500</text>
+      <text x="142" y="52" font-size="22" font-weight="800">+</text>
+      <rect x="160" y="20" width="100" height="50" rx="10" fill="#22C55E"/><text x="210" y="50" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">ค้างรับ 5</text>
+      <text x="270" y="52" font-size="22" font-weight="800">+</text>
+      <rect x="288" y="20" width="90" height="50" rx="10" fill="#22C55E"/><text x="333" y="50" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">เงินสด 10</text>
+      <text x="388" y="52" font-size="22" font-weight="800">−</text>
+      <rect x="405" y="20" width="85" height="50" rx="10" fill="#DC2626"/><text x="447" y="50" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">หนี้สิน 3</text>
+      <text x="498" y="52" font-size="22" font-weight="800">−</text>
+      <rect x="515" y="20" width="75" height="50" rx="10" fill="#DC2626"/><text x="552" y="44" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">ค่าใช้จ่าย</text><text x="552" y="60" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">ค้างจ่าย 2</text>
+      <line x1="10" y1="92" x2="590" y2="92" stroke="#0F172A" stroke-width="3"/>
+      <rect x="220" y="104" width="160" height="42" rx="10" fill="#2563EB"/><text x="300" y="131" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">50 ล้านหน่วย</text>
+      <text x="400" y="132" font-size="18" font-weight="800" fill="#16A34A">= 10.20 บาท/หน่วย</text>
+    </svg>
+    <figcaption>หน่วย: ล้านบาท (500 + 5 + 10 − 3 − 2 = 510 ล้านบาท)</figcaption>
+  </figure>
+  <div class="ex"><h4>ตัวอย่าง: ผลตอบแทนกองทุนและ TER</h4><div class="b calc-line">
+    ซื้อที่ราคาขาย 10.10 บาท ขายคืนที่ราคารับซื้อคืน 10.90 บาท ได้ปันผลระหว่างถือ 0.30 บาท<br>
+    ผลตอบแทน = (10.90 − 10.10 + 0.30) ÷ 10.10 = 1.10 ÷ 10.10 = <span class="ans">10.89%</span><br><br>
+    ค่าจัดการ 1.50% + ผู้ดูแลผลประโยชน์ 0.05% + นายทะเบียน 0.10% + อื่น ๆ 0.10% (ค่าธรรมเนียมขาย 1% ไม่นับ)<br>
+    TER = <b>1.75%</b>
+  </div></div>
+  <div class="trap"><b>กับดัก TER</b> โจทย์มักให้ทั้ง "อัตราเพดานตามโครงการ" และ "อัตราที่เรียกเก็บจริง" ให้ใช้อัตราที่เก็บจริง และตัดค่าธรรมเนียมขาย/รับซื้อคืนทิ้ง เพราะเก็บจากผู้ลงทุน ไม่ได้เก็บจากกองทุน</div>
+</section>
+
+<!-- ===== L10 ===== -->
+<section class="blk" id="l10">
+  <div class="sec-head"><span class="wk w3">สัปดาห์ 3 วัน 19–20</span><h2>บท 10 จรรยาบรรณและกฎระเบียบ</h2></div>
+  <div class="key"><b>หมวดชี้ขาด</b> ต้องได้ ≥ 70% แยกจากคะแนนรวม ตั้งเป้าฝึกให้ได้ 85% ขึ้นไป</div>
+  <div class="simple">
+    <p>จำ 3 ข้อนี้ข้อเดียวก็ตอบได้เกือบหมด:</p>
+    <ul>
+      <li><b>ซื่อสัตย์</b> พูดความจริงกับลูกค้าเสมอ ไม่รับปากว่าจะได้กำไรแน่ ๆ</li>
+      <li><b>ไม่ตัดสินใจแทน</b> เงินเป็นของลูกค้า ลูกค้าต้องเป็นคนเลือกเอง และห้ามใช้บัญชีคนอื่น</li>
+      <li><b>ลูกค้ามาก่อน</b> ถ้าเราได้ประโยชน์แต่ลูกค้าเสียประโยชน์ = ผิด</li>
+    </ul>
+    <p>ถ้าตัวเลือกไหนอ้างว่า "ลูกค้ายินยอมแล้ว" หรือ "ทำเพื่อไม่ให้ลูกค้าพลาดโอกาส" แต่ขัดกับ 3 ข้อนี้ ก็ยังผิดอยู่ดี</p>
+  </div>
+  <div class="detail">
+    <h4>กระบวนการขายและดูแลลูกค้า</h4>
+    <ul>
+      <li>ทำ KYC และ suitability test ก่อนแนะนำ เปิดเผยความเสี่ยง ค่าธรรมเนียม และความขัดแย้งทางผลประโยชน์</li>
+      <li><b>ผู้ลงทุนเปราะบาง</b>: อายุ ≥ 60 ปี และไม่มีความรู้/ประสบการณ์ลงทุน (รวมถึงผู้มีข้อจำกัดด้านการสื่อสารหรือการตัดสินใจ) ต้องดูแลเป็นพิเศษ</li>
+      <li><b>ข้อร้องเรียน</b>: รับเรื่อง บันทึก แจ้งผู้รับผิดชอบ และติดตามผลอย่างเป็นระบบ</li>
+      <li><b>ทรัพย์สินลูกค้า</b>: แยกจากทรัพย์สินของบริษัท ห้ามนำไปใช้ส่วนตัว</li>
+      <li><b>AML</b>: รู้จักลูกค้า ตรวจแหล่งที่มาของเงิน รายงานธุรกรรมที่น่าสงสัย ห้ามบอกลูกค้าว่ามีการรายงาน</li>
+    </ul>
+    <h4>ข้อห้ามเด็ดขาดของผู้ติดต่อผู้ลงทุน</h4>
+    <div class="tbl"><table>
+      <tr><th>ข้อห้าม</th><th>ความหมาย</th></tr>
+      <tr><td>ตัดสินใจแทนลูกค้า</td><td>ซื้อขายโดยลูกค้าไม่ได้สั่ง แม้ลูกค้าเคยบอกว่า "จัดการให้ได้เลย"</td></tr>
+      <tr><td>ใช้บัญชีผู้อื่น / ให้ผู้อื่นใช้บัญชี</td><td>รวมถึงบัญชีญาติหรือบัญชีลูกค้า</td></tr>
+      <tr><td>Churning</td><td>ส่งคำสั่งถี่เกินจำเป็นเพื่อหาค่าคอมมิชชัน</td></tr>
+      <tr><td>Front running</td><td>ส่งคำสั่งของตนเองก่อนคำสั่งใหญ่ของลูกค้าเพื่อหากำไร</td></tr>
+      <tr><td>รับประกันผลตอบแทน / รับผิดชอบผลขาดทุนแทน</td><td>สัญญาว่ากำไรแน่นอน หรือจะชดเชยขาดทุนให้</td></tr>
+      <tr><td>ใช้ข้อมูลภายใน</td><td>ซื้อขายหรือบอกต่อข้อมูลที่ยังไม่เปิดเผยต่อสาธารณะ</td></tr>
+    </table></div>
+    <h4>ช่วง blackout ของ underwriter</h4>
+    <ul>
+      <li>ห้ามชักชวน/แนะนำหลักทรัพย์ที่ตนจัดจำหน่าย: <b>15 วันทำการก่อนเสนอขาย → วันปิดการขาย</b></li>
+      <li>บทวิเคราะห์ต้องเปิดเผยส่วนได้เสีย: <b>วันปิดการขาย → 30 วัน</b></li>
+    </ul>
+  </div>
+  <figure>
+    <svg viewBox="0 0 600 120" role="img" aria-label="ไทม์ไลน์ underwriter ห้ามแนะนำ 15 วันทำการก่อนเสนอขายถึงวันปิดการขาย และต้องเปิดเผยส่วนได้เสีย 30 วันหลังปิดการขาย">
+      <line x1="20" y1="60" x2="580" y2="60" stroke="#D1D5DB" stroke-width="6"/>
+      <rect x="60" y="48" width="300" height="24" rx="12" fill="#DC2626"/>
+      <text x="210" y="65" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">ห้ามชักชวน/แนะนำ</text>
+      <rect x="360" y="48" width="200" height="24" rx="12" fill="#FACC15"/>
+      <text x="460" y="65" text-anchor="middle" fill="#0F172A" font-size="14" font-weight="700">เปิดเผยส่วนได้เสีย 30 วัน</text>
+      <text x="60" y="100" font-size="13" fill="#6B7280">15 วันทำการก่อนเสนอขาย</text>
+      <text x="360" y="100" text-anchor="middle" font-size="13" fill="#6B7280" font-weight="700">วันปิดการขาย</text>
+      <line x1="360" y1="40" x2="360" y2="82" stroke="#0F172A" stroke-width="2"/>
+    </svg>
+  </figure>
+  <div class="ex"><h4>ตัวอย่างสถานการณ์</h4><div class="b">
+    ลูกค้าโทรมาว่า "ไม่ว่าง ช่วยซื้อหุ้นที่แนะนำให้ด้วยนะ ตามที่เห็นสมควรเลย" แล้วเจ้าหน้าที่ส่งคำสั่งซื้อเองเพื่อไม่ให้ลูกค้าพลาดจังหวะ<br>
+    <span class="ans">ผิด เพราะเป็นการตัดสินใจแทนลูกค้า แม้ลูกค้ายินยอมด้วยวาจา</span>
+  </div></div>
+</section>
+
+<!-- ===== L11 ===== -->
+<section class="blk" id="l11">
+  <div class="sec-head"><span class="wk w3">สัปดาห์ 3 วัน 21</span><h2>บท 11 การแนะนำการลงทุนที่เหมาะสม</h2></div>
+  <div class="simple">
+    <p>เหมือนหมอต้องถามอาการก่อนจ่ายยา ผู้แนะนำต้องรู้จักลูกค้าก่อน (KYC) ว่าอายุเท่าไร มีเงินเท่าไร มีหนี้ไหม และ "ใจ" รับการขาดทุนได้แค่ไหน</p>
+    <p><b>ทำได้ไหม</b> (ability) ดูจากกระเป๋าเงินและภาระ<br><b>อยากทำไหม</b> (willingness) ดูจากใจและนิสัย</p>
+    <p>คนหนุ่มสาวมีเวลาเยอะ เสี่ยงได้มาก คนใกล้เกษียณต้องระวังเงินต้นมากขึ้น</p>
+  </div>
+  <div class="detail">
+    <div class="duo">
+      <div class="g"><h4>ความสามารถรับความเสี่ยง (Ability)</h4>อายุ รายได้และความมั่นคงของรายได้ ความมั่งคั่ง หนี้สิน ภาระครอบครัว ระยะเวลาลงทุน สภาพคล่องที่ต้องใช้</div>
+      <div class="bl"><h4>ความเต็มใจรับความเสี่ยง (Willingness)</h4>ทัศนคติ ความรู้สึกต่อการขาดทุน ประสบการณ์และพฤติกรรมการลงทุนที่ผ่านมา</div>
+    </div>
+    <ul>
+      <li><b>วงจรชีวิตผู้ลงทุน</b>: สะสมความมั่งคั่ง (รับความเสี่ยงได้สูง) → รักษาความมั่งคั่ง → ใช้จ่ายความมั่งคั่ง/ส่งต่อมรดก (เน้นรักษาเงินต้นและรายได้)</li>
+      <li><b>วัตถุประสงค์การลงทุน</b>: Capital protection (รักษาเงินต้น) → Income (รายได้สม่ำเสมอ) → Growth (เติบโตของเงินทุน) ความเสี่ยงสูงขึ้นตามลำดับ</li>
+      <li>เมื่อ ability และ willingness ไม่ตรงกัน ให้ยึดระดับที่ <b>ต่ำกว่า</b></li>
+      <li><b>IC</b> (ผู้แนะนำการลงทุน) แนะนำการลงทุนได้ แต่วางแผนการลงทุนไม่ได้ ; <b>IP</b> (ผู้วางแผนการลงทุน) ทั้งแนะนำและวางแผนได้</li>
+    </ul>
+  </div>
+  <div class="ex"><h4>ตัวอย่าง</h4><div class="b">
+    ลูกค้าอายุ 30 ปี รายได้มั่นคง ไม่มีหนี้ แต่ตอบแบบประเมินว่า "ขาดทุน 5% ก็นอนไม่หลับ"<br>
+    ความสามารถ: สูง ; ความเต็มใจ: ต่ำ → <span class="ans">แนะนำตามระดับความเสี่ยงที่ต่ำกว่า</span>
+  </div></div>
+</section>
+
+<!-- ===== NUMBERS ===== -->
+<section class="blk" id="numbers">
+  <div class="sec-head"><h2>ตัวเลขเกณฑ์ที่ต้องจำ</h2></div>
+  <p class="intro">ออกสอบตรง ๆ ทบทวนทุกวันในสัปดาห์ที่ 4 (ตรวจสอบกับประกาศล่าสุดของ ก.ล.ต. และ SET ก่อนสอบ)</p>
+  <div class="nums">
+    <div class="num"><b>≥ 60 ปี</b><span>ผู้ลงทุนเปราะบาง (ร่วมกับไม่มีความรู้/ประสบการณ์)</span></div>
+    <div class="num"><b>15 วันทำการ</b><span>underwriter ห้ามแนะนำ ก่อนเสนอขายจนถึงวันปิดการขาย</span></div>
+    <div class="num"><b>30 วัน</b><span>เปิดเผยส่วนได้เสียในบทวิเคราะห์หลังวันปิดการขาย</span></div>
+    <div class="num"><b>35% / 25%</b><span>margin: เรียกหลักประกันเพิ่ม / บังคับขาย</span></div>
+    <div class="num"><b>55% 1 ปี</b><span>silent period ของ strategic shareholders</span></div>
+    <div class="num"><b>8% 30 นาที</b><span>circuit breaker ขั้น 1 (ขั้น 2: 15%, ขั้น 3: 20%)</span></div>
+    <div class="num"><b>≥ 300 ล้าน</b><span>ทุนชำระแล้วเข้าจดทะเบียน SET</span></div>
+    <div class="num"><b>BBB- / Baa3</b><span>ขั้นต่ำของ investment grade</span></div>
+    <div class="num"><b>≥ 90%</b><span>กองอสังหาฯ/REIT จ่ายปันผลจากกำไรสุทธิ</span></div>
+    <div class="num"><b>T+2</b><span>ชำระราคาหุ้นและตราสารหนี้</span></div>
+  </div>
+</section>
+
+<!-- ===== FORMULAS ===== -->
+<section class="blk" id="formulas">
+  <div class="sec-head"><h2>สรุปสูตร</h2></div>
+  <p class="intro">ท่องจนเขียนได้จากความจำภายในวันที่ 22</p>
+  <div class="fgrid" id="fgrid"></div>
+</section>
+
+<!-- ===== GLOSSARY ===== -->
+<section class="blk" id="glossary">
+  <div class="sec-head"><h2>คำศัพท์และนิยาม</h2><span class="muted" id="gCount"></span></div>
+  <p class="intro">สลับโหมดด้านบนเพื่อดูคำอธิบายแบบเข้าใจง่ายหรือแบบละเอียด</p>
+  <div class="gtools">
+    <input type="search" id="gSearch" placeholder="ค้นหาคำศัพท์ เช่น ดูเรชัน, NAV, churning" aria-label="ค้นหาคำศัพท์">
+  </div>
+  <div class="chips" id="gChips" role="group" aria-label="กรองตามหมวด"></div>
+  <div class="glist" id="glist"></div>
+</section>
+
+<!-- ===== QUIZ ===== -->
+<section class="blk" id="quiz">
+  <div class="sec-head"><h2>แบบทดสอบย่อย</h2><span class="score" id="qScore"></span></div>
+  <p class="intro">10 ข้อ รวมข้อยอดนิยมและกับดักที่พบบ่อย เลือกคำตอบเพื่อดูเฉลยทันที</p>
+  <div id="qlist"></div>
+  <button id="qReset" style="font:inherit;font-weight:700;border:2px solid var(--green);background:#fff;color:var(--green);border-radius:999px;padding:6px 18px;cursor:pointer">ทำใหม่</button>
+</section>
+
+<!-- ===== TIPS ===== -->
+<section class="blk" id="tips">
+  <div class="sec-head"><h2>เทคนิคทำข้อสอบ</h2></div>
+  <div class="tbl"><table>
+    <tr><th>เทคนิค</th><th>วิธีใช้</th></tr>
+    <tr><td>ขีดคำว่า "ไม่"</td><td>กับดักอันดับ 1 คือโจทย์ถาม "ข้อใดไม่ถูกต้อง" แล้วเลือกข้อที่ถูก</td></tr>
+    <tr><td>ข้อ I II III ใช้วิธีตัด</td><td>หาข้อที่มั่นใจว่าผิด 1 ข้อ มักตัดตัวเลือกได้ 2 ตัวทันที</td></tr>
+    <tr><td>ข้อคำนวณ ประมาณก่อน</td><td>ตัวเลือกมักห่างกันพอให้ประมาณได้ เช่น real return ≈ nominal − inflation</td></tr>
+    <tr><td>จำเป็นคู่ตรงข้าม</td><td>Ability/Willingness, Sharpe/Treynor, Callable/Puttable, Freehold/Leasehold, IC/IP</td></tr>
+    <tr><td>จรรยาบรรณ คิดจาก 3 หลัก</td><td>ซื่อสัตย์ / ไม่ตัดสินใจแทน ไม่ใช้บัญชีผู้อื่น / ลูกค้ามาก่อน</td></tr>
+    <tr><td>บริหารเวลา</td><td>ข้อความเข้าใจ ≤ 1 นาที, ข้อคำนวณ ≤ 2 นาที, เกิน 3 นาทีให้ข้ามแล้วกลับมา</td></tr>
+  </table></div>
+</section>
+
+</main>
+</div>
+
+<footer><b>"เรียนทีละวัน สอบผ่านทีละหมวด"</b><p style="margin:.3em 0 0">เนื้อหาเพื่อการทบทวน ตรวจสอบเกณฑ์และกฎล่าสุดกับ ATI, SET และ ก.ล.ต. ก่อนสอบ</p></footer>
+
+<script>
+/* ---------- mode toggle ---------- */
+const modeBtns=document.querySelectorAll('.mode button');
+function setMode(m){
+  document.body.classList.remove('m-simple','m-detail');
+  if(m!=='both')document.body.classList.add('m-'+m);
+  modeBtns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.mode===m));
+}
+modeBtns.forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+
+/* ---------- mobile menu ---------- */
+const side=document.getElementById('side'),menuBtn=document.getElementById('menuBtn');
+menuBtn.addEventListener('click',()=>{const o=side.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o)});
+side.addEventListener('click',e=>{if(e.target.tagName==='A'){side.classList.remove('open');menuBtn.setAttribute('aria-expanded',false)}});
+
+/* ---------- active nav ---------- */
+const links=[...side.querySelectorAll('a')];
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-30% 0px -60% 0px'});
+document.querySelectorAll('section.blk').forEach(s=>obs.observe(s));
+
+/* ---------- plan ---------- */
+const plan={
+1:[[1,'HPR, ผลตอบแทนที่แท้จริง, FV, APR vs EAR','ชุดคำนวณ ข้อ 1–6','l1'],[2,'ค่าเฉลี่ยเรขาคณิต, E(R), CV','ชุดคำนวณ ข้อ 3, 7–8','l2'],[3,'ผลตอบแทนพอร์ต, สหสัมพันธ์, เบต้า','ชุดคำนวณ ข้อ 9–13','l2'],[4,'CAPM, SML, Underpriced/Overpriced, Sharpe/Treynor/Jensen','ชุดคำนวณ ข้อ 14–17','l3'],[5,'ROA, ROE, D/E, Current ratio','ชุดคำนวณ ข้อ 18–20','l4'],[6,'ทวนสัปดาห์: ทำชุดคำนวณ 1–20 จับเวลา ≤ 90 วินาที/ข้อ','สมุดข้อผิด','formulas'],[7,'ทวนสัปดาห์ต่อ + ทวนสมุดข้อผิด','สมุดข้อผิด','formulas']],
+2:[[8,'ประเภทหุ้น, สามัญ vs บุริมสิทธิ, เข้าจดทะเบียน, silent period','ชุดตราสารทุน ข้อ 1–8','l5'],[9,'DDM, PER, PBV และการตัดสินใจซื้อขาย','ตราสารทุน 9–11 + คำนวณ 21–26','l5'],[10,'วอร์แรนท์, time value, gearing, DW, NVDR','ตราสารทุน 12–20 + คำนวณ 27–29','l6'],[11,'AOM, เครื่องหมาย, cash balance, margin, circuit breaker, ดัชนี','ชุดตราสารทุน ข้อ 21–26','l7'],[12,'องค์ประกอบตราสารหนี้, ลำดับสิทธิ, zero coupon, callable/puttable/convertible','ชุดตราสารหนี้ ข้อ 1–10','l8'],[13,'มูลค่าตราสารหนี้, current yield, yield curve','ตราสารหนี้ 11–14 + คำนวณ 30–34','l8'],[14,'credit rating, ดูเรชัน, reinvestment risk, OTC','ชุดตราสารหนี้ ข้อ 15–27','l8']],
+3:[[15,'โครงสร้างกองทุน, Active vs Passive, กองเปิด vs กองปิด','ชุดกองทุนรวม ข้อ 1–4','l9'],[16,'ETF, Index, FoF, Feeder, อสังหาฯ, REIT, Trigger, GMS','ชุดกองทุนรวม ข้อ 5–14','l9'],[17,'NAV, ผลตอบแทนกองทุน, Sharpe/IR/Tracking error','กองทุน 15–22 + คำนวณ 35–39','l9'],[18,'Fund fact sheet, ภาษี, Core & Satellite, DCA, TER','ชุดกองทุนรวม ข้อ 23–27','l9'],[19,'กระบวนการขาย, suitability, ผู้ลงทุนเปราะบาง, ข้อร้องเรียน, AML','ชุดจรรยาบรรณ ข้อ 1–15','l10'],[20,'ข้อห้ามเด็ดขาด, ข้อมูลภายใน, underwriter blackout','ชุดจรรยาบรรณ ข้อ 16–26','l10'],[21,'KYC, ability vs willingness, วงจรชีวิต, IC vs IP','ชุดจรรยาบรรณ ข้อ 27–33','l11']],
+4:[[22,'ท่องสูตรทั้งหมด + ตัวเลขเกณฑ์','เขียนจากความจำ','formulas'],[23,'ชุดจรรยาบรรณ 33 ข้อ จับเวลา 45 นาที','เป้า ≥ 80%','l10'],[24,'ชุดคำนวณ 39 ข้อ จับเวลา 70 นาที','สมุดข้อผิด','formulas'],[25,'ชุดกองทุน + ตราสารทุน จับเวลา','สมุดข้อผิด','l9'],[26,'ชุดตราสารหนี้ + ทวนสมุดข้อผิดทั้งหมด','สมุดข้อผิด','l8'],[27,'จำลองสอบ: สุ่ม 100 ข้อ ทำใน 2.5 ชม.','เป้า ≥ 85%','quiz'],[28,'ทวนข้อที่ยังผิด + พักผ่อนก่อนสอบ','นอนให้พอ','numbers']]
+};
+let done=new Set(), curWeek=1;
+const tabs=document.getElementById('weekTabs'), dayList=document.getElementById('dayList');
+[1,2,3,4].forEach(w=>{const b=document.createElement('button');b.setAttribute('role','tab');b.textContent='สัปดาห์ '+w;b.onclick=()=>showWeek(w);b.dataset.w=w;tabs.appendChild(b)});
+function showWeek(w){
+  curWeek=w;
+  tabs.querySelectorAll('button').forEach(b=>b.setAttribute('aria-selected',b.dataset.w==w));
+  dayList.innerHTML=plan[w].map(([d,t,p,l])=>`<li class="${done.has(d)?'done':''}"><label><input type="checkbox" data-d="${d}" ${done.has(d)?'checked':''}><span class="d">วัน ${d}</span><span>${t}<span class="tag">ฝึก: ${p} <a href="#${l}">ไปที่บทเรียน</a></span></span></label></li>`).join('');
+}
+dayList.addEventListener('change',e=>{
+  const d=+e.target.dataset.d; e.target.checked?done.add(d):done.delete(d);
+  e.target.closest('li').classList.toggle('done',e.target.checked); updateProg(); save();
+});
+function updateProg(){document.getElementById('progBar').style.width=(done.size/28*100)+'%';document.getElementById('progText').textContent=`เรียนแล้ว ${done.size} จาก 28 วัน`}
+async function save(){try{await window.storage?.set('ic-plan-done',JSON.stringify([...done]),false)}catch(e){}}
+async function load(){try{const r=await window.storage?.get('ic-plan-done',false);if(r&&r.value){done=new Set(JSON.parse(r.value));showWeek(curWeek);updateProg()}}catch(e){}}
+showWeek(1);updateProg();load();
+document.querySelectorAll('.route .stop').forEach(s=>{
+  const go=()=>{showWeek(+s.dataset.week);document.getElementById('plan').scrollIntoView()};
+  s.addEventListener('click',go);s.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+});
+
+/* ---------- calculators ---------- */
+const $=id=>document.getElementById(id), v=id=>parseFloat($(id).value);
+const fmt=(n,d=2)=>isFinite(n)?n.toLocaleString('th-TH',{minimumFractionDigits:d,maximumFractionDigits:d}):'–';
+function fv(){const pv=v('fvPV'),r=v('fvR')/100,n=v('fvN'),m=Math.max(1,v('fvM'));
+  const f=pv*Math.pow(1+r/m,m*n),ear=Math.pow(1+r/m,m)-1;
+  $('fvOut').innerHTML=`มูลค่าในอนาคต <b>${fmt(f)} บาท</b> (ดอกเบี้ยรวม ${fmt(f-pv)} บาท)<br>EAR = <b>${fmt(ear*100)}%</b>`}
+function capm(){const rf=v('cRf'),rm=v('cRm'),b=v('cB'),e=v('cE');const k=rf+b*(rm-rf);
+  const verdict=e>k?'<b>Underpriced → ซื้อ</b>':e<k?'<span class="bad">Overpriced → ขาย</span>':'ราคาเหมาะสม';
+  $('capmOut').innerHTML=`k = ${rf} + ${b} × (${rm} − ${rf}) = <b>${fmt(k)}%</b><br>คาดหวัง ${e}% เทียบ ${fmt(k)}% → ${verdict}`}
+function ddm(){const d0=v('dD0'),g=v('dG')/100,k=v('dK')/100,p=v('dP');
+  if(k<=g){$('ddmOut').innerHTML='<span class="bad">k ต้องมากกว่า g จึงใช้สูตร Gordon ได้</span>';return}
+  const d1=d0*(1+g),val=d1/(k-g);
+  $('ddmOut').innerHTML=`D₁ = ${d0} × ${fmt(1+g,2)} = ${fmt(d1)} ; มูลค่า = ${fmt(d1)} ÷ ${fmt((k-g)*100)}% = <b>${fmt(val)} บาท</b><br>ราคาตลาด ${p} → ${p<val?'<b>Underpriced → ซื้อ</b>':p>val?'<span class="bad">Overpriced → ขาย</span>':'เท่ากับมูลค่า'}`}
+function bond(){const par=v('bPar'),c=v('bC')/100,k=v('bK')/100,n=v('bN'),f=Math.max(1,v('bF'));
+  const cp=par*c/f,i=k/f,N=Math.round(n*f);
+  const pvc=i===0?cp*N:cp*(1-Math.pow(1+i,-N))/i, pvp=par/Math.pow(1+i,N), price=pvc+pvp;
+  const tag=price>par+0.005?'Premium':price<par-0.005?'Discount':'Par';
+  $('bondOut').innerHTML=`ดอกต่องวด ${fmt(cp)} ; อัตราต่องวด ${fmt(i*100,3)}% ; ${N} งวด<br>PV ดอกเบี้ย ${fmt(pvc)} + PV เงินต้น ${fmt(pvp)} = <b>${fmt(price)} บาท (${tag})</b><br>Current yield = <b>${fmt(par*c/price*100)}%</b>`}
+[['fvPV','fvR','fvN','fvM',fv],['cRf','cRm','cB','cE',capm],['dD0','dG','dK','dP',ddm],['bPar','bC','bK','bN','bF',bond]].forEach(a=>{const fn=a.pop();a.forEach(id=>$(id).addEventListener('input',fn));fn()});
+
+/* ---------- formulas ---------- */
+const formulas=[
+ ['ผลตอบแทนและเงินตามเวลา',[['HPR','(ราคาขาย − ราคาซื้อ + ปันผล) ÷ ราคาซื้อ'],['ผลตอบแทนที่แท้จริง','≈ ผลตอบแทน − เงินเฟ้อ'],['มูลค่าอนาคต','FV = PV × (1+r)ⁿ'],['EAR','(1 + APR/m)ᵐ − 1'],['ค่าเฉลี่ยเรขาคณิต','ⁿ√[(1+r₁)(1+r₂)…] − 1'],['ผลตอบแทนคาดหวัง','Σ(ความน่าจะเป็น × ผลตอบแทน)'],['CV','SD ÷ ผลตอบแทน (ต่ำ = ดี)'],['ผลตอบแทนพอร์ต','Σ(น้ำหนัก × ผลตอบแทน)']]],
+ ['CAPM และการวัดผล',[['CAPM','k = Rf + β(Rm − Rf)'],['ส่วนชดเชยความเสี่ยง','β(Rm − Rf)'],['ตัดสินใจ','คาดหวัง > k → ซื้อ ; < k → ขาย'],['Sharpe','(Rp − Rf) ÷ SD'],['Treynor','(Rp − Rf) ÷ β'],['Jensen\'s alpha','Rp − [Rf + β(Rm − Rf)]']]],
+ ['ประเมินมูลค่าหุ้น',[['DDM (Gordon)','P = D₁ ÷ (k − g), D₁ = D₀(1+g)'],['PER','ราคาเหมาะสม = PER × EPS'],['PBV','ราคาเหมาะสม = PBV × BV'],['ROE','กำไรสุทธิ ÷ ส่วนผู้ถือหุ้น'],['D/E','หนี้สิน ÷ ส่วนผู้ถือหุ้น (ต่ำ = เสี่ยงต่ำ)']]],
+ ['วอร์แรนท์',[['มูลค่าที่แท้จริง (call)','max(ราคาหุ้น − ราคาใช้สิทธิ, 0)'],['มูลค่าเวลา','ราคาวอร์แรนท์ − มูลค่าที่แท้จริง'],['กำไร/ขาดทุน','Δราคาหุ้น × delta × จำนวนหน่วย'],['ราคาเพิ่มเมื่อ','หุ้น↑ ผันผวน↑ อายุ↑ ดอกเบี้ย↑ ราคาใช้สิทธิ↓ ปันผล↓']]],
+ ['ตราสารหนี้',[['หุ้นกู้จ่ายครึ่งปี','ดอก/งวด = คูปอง÷2, k/งวด = k÷2, งวด = ปี×2'],['Zero coupon','P = Par ÷ (1 + k/2)^(ปี×2)'],['Current yield','ดอกเบี้ยต่อปี ÷ ราคาตลาด'],['คูปอง vs k','> k Premium ; < k Discount ; = Par'],['ดูเรชันสูงเมื่อ','อายุยาว คูปองต่ำ YTM ต่ำ']]],
+ ['กองทุนรวม',[['NAV ต่อหน่วย','(ทรัพย์สิน + รายได้ค้างรับ + เงินสด − หนี้สิน − ค่าใช้จ่ายค้างจ่าย) ÷ จำนวนหน่วย'],['ผลตอบแทนผู้ลงทุน','(bid ตอนขาย − offer ตอนซื้อ + ปันผล) ÷ offer ตอนซื้อ'],['TER','ค่าจัดการ + trustee + นายทะเบียน + อื่น ๆ (อัตราจริง)'],['เก็บจากผู้ลงทุน','ค่าธรรมเนียมขาย + รับซื้อคืน']]]
+];
+$('fgrid').innerHTML=formulas.map(([t,rows])=>`<div class="fcard"><h4>${t}</h4><dl>${rows.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl></div>`).join('');
+
+/* ---------- glossary ---------- */
+const G=[
+['ผลตอบแทนช่วงถือครอง','HPR','พื้นฐาน','กำไรทั้งหมดที่ได้ เทียบกับเงินที่ลงไปตอนแรก','ผลตอบแทนรวมตลอดระยะเวลาที่ถือ ทั้งส่วนต่างราคาและรายได้ (ปันผล/ดอกเบี้ย) หารด้วยราคาซื้อ'],
+['ผลตอบแทนที่แท้จริง','Real return','พื้นฐาน','กำไรที่เหลือหลังของแพงขึ้นแล้ว','ผลตอบแทนที่ปรับด้วยเงินเฟ้อ สะท้อนอำนาจซื้อที่เพิ่มขึ้นจริง ≈ ผลตอบแทนที่เป็นตัวเงิน − อัตราเงินเฟ้อ'],
+['เงินเฟ้อ','Inflation','พื้นฐาน','ของชิ้นเดิมราคาแพงขึ้นเรื่อย ๆ','การเพิ่มขึ้นของระดับราคาสินค้าและบริการโดยทั่วไป ทำให้อำนาจซื้อของเงินลดลง'],
+['มูลค่าเงินตามเวลา','Time value of money','พื้นฐาน','เงินวันนี้มีค่ามากกว่าเงินจำนวนเดียวกันในอนาคต เพราะเอาไปออกดอกได้','แนวคิดที่ใช้ FV และ PV แปลงค่าเงินข้ามเวลาด้วยอัตราผลตอบแทน'],
+['อัตราดอกเบี้ยที่ประกาศ','APR','พื้นฐาน','ดอกเบี้ยที่เขียนไว้บนป้าย','อัตราดอกเบี้ยต่อปีแบบไม่คิดทบต้นภายในปี'],
+['อัตราดอกเบี้ยที่แท้จริงต่อปี','EAR','พื้นฐาน','ดอกเบี้ยที่ได้จริงเมื่อคิดทบต้นแล้ว','(1 + APR/m)ᵐ − 1 ยิ่งทบต้นบ่อย EAR ยิ่งสูงกว่า APR'],
+['ค่าเฉลี่ยเรขาคณิต','Geometric mean','พื้นฐาน','ค่าเฉลี่ยที่บอกว่าเงินโตจริงปีละเท่าไร','ผลตอบแทนเฉลี่ยแบบทบต้นหลายงวด ต่ำกว่าหรือเท่ากับค่าเฉลี่ยเลขคณิตเสมอ'],
+['ผลตอบแทนคาดหวัง','Expected return','ความเสี่ยง','การเดาผลตอบแทนแบบมีหลักจากโอกาสของแต่ละเหตุการณ์','ผลรวมของความน่าจะเป็นคูณผลตอบแทนในแต่ละสถานการณ์'],
+['ส่วนเบี่ยงเบนมาตรฐาน','Standard deviation (SD)','ความเสี่ยง','ผลลัพธ์เหวี่ยงไปมามากแค่ไหน','วัดความผันผวนของผลตอบแทนรอบค่าเฉลี่ย ใช้แทนความเสี่ยงรวม'],
+['ค่าสัมประสิทธิ์ความแปรผัน','CV','ความเสี่ยง','ต้องทนเหวี่ยงเท่าไรต่อกำไร 1 หน่วย ยิ่งน้อยยิ่งคุ้ม','SD ÷ ผลตอบแทนคาดหวัง ใช้เปรียบเทียบสินทรัพย์ที่ผลตอบแทนต่างกัน'],
+['ค่าสหสัมพันธ์','Correlation','ความเสี่ยง','ของสองอย่างขึ้นลงพร้อมกันไหม','ค่าระหว่าง −1 ถึง +1 ยิ่งต่ำการกระจายการลงทุนยิ่งลดความเสี่ยงได้มาก'],
+['ความเสี่ยงที่เป็นระบบ','Systematic risk','ความเสี่ยง','เรื่องใหญ่ที่กระทบทุกคน หนีไม่ได้','ความเสี่ยงตลาด เช่น ดอกเบี้ย เศรษฐกิจ การเมือง กระจายการลงทุนไม่ได้ วัดด้วยเบต้า'],
+['ความเสี่ยงที่ไม่เป็นระบบ','Unsystematic risk','ความเสี่ยง','ปัญหาเฉพาะบริษัทเดียว ลดได้ด้วยการถือหลายตัว','ความเสี่ยงเฉพาะกิจการหรืออุตสาหกรรม ลดได้ด้วยการกระจายการลงทุน'],
+['เบต้า','Beta (β)','ความเสี่ยง','หุ้นเหวี่ยงแรงกว่าตลาดกี่เท่า','วัดความอ่อนไหวของผลตอบแทนต่อตลาด β = 1 เท่าตลาด, > 1 ผันผวนกว่าตลาด'],
+['CAPM','Capital Asset Pricing Model','การวัดผล','สูตรหาผลตอบแทนที่ควรได้จากความเสี่ยงที่ยอมรับ','k = Rf + β(Rm − Rf) ใช้หาอัตราผลตอบแทนที่ต้องการ'],
+['อัตราผลตอบแทนที่ปราศจากความเสี่ยง','Risk-free rate (Rf)','การวัดผล','ดอกเบี้ยที่ได้แน่ ๆ ไม่มีวันเบี้ยว','มักใช้อัตราผลตอบแทนพันธบัตรรัฐบาลระยะสั้น'],
+['SML','Security Market Line','การวัดผล','เส้นบอกว่าเสี่ยงเท่านี้ควรได้เท่าไร','เส้นแสดง k ตาม β หลักทรัพย์เหนือเส้น = Underpriced ใต้เส้น = Overpriced'],
+['Underpriced','ราคาต่ำกว่ามูลค่า','การวัดผล','ของดีราคาถูก น่าซื้อ','ผลตอบแทนคาดหวัง > k หรือราคาตลาด < มูลค่าที่เหมาะสม → ซื้อ'],
+['Overpriced','ราคาสูงกว่ามูลค่า','การวัดผล','ของแพงเกินจริง ควรขาย','ผลตอบแทนคาดหวัง < k หรือราคาตลาด > มูลค่าที่เหมาะสม → ขาย'],
+['Sharpe ratio','อัตราส่วนชาร์ป','การวัดผล','ได้กำไรส่วนเกินเท่าไรต่อความเหวี่ยงทั้งหมด','(Rp − Rf) ÷ SD ใช้ความเสี่ยงรวม ความเสี่ยงที่ไม่เป็นระบบเพิ่ม → Sharpe ลด'],
+['Treynor ratio','อัตราส่วนเทรย์เนอร์','การวัดผล','กำไรส่วนเกินต่อความเสี่ยงของตลาด','(Rp − Rf) ÷ β ใช้เฉพาะความเสี่ยงที่เป็นระบบ'],
+['Jensen\'s alpha','อัลฟาของเจนเซน','การวัดผล','ผู้จัดการเก่งกว่าที่ควรเป็นเท่าไร','Rp − ผลตอบแทนตาม CAPM ค่าบวกแปลว่าทำได้ดีกว่าที่คาด'],
+['ROE','ผลตอบแทนต่อส่วนผู้ถือหุ้น','การเงินบริษัท','เงินของเจ้าของทำกำไรได้กี่เปอร์เซ็นต์','กำไรสุทธิ ÷ ส่วนของผู้ถือหุ้น'],
+['D/E','อัตราส่วนหนี้สินต่อทุน','การเงินบริษัท','ยืมเงินมาเยอะกว่าเงินตัวเองกี่เท่า','หนี้สิน ÷ ส่วนของผู้ถือหุ้น ต่ำ = ความเสี่ยงทางการเงินต่ำ'],
+['EPS','กำไรต่อหุ้น','ตราสารทุน','กำไรที่แบ่งให้หุ้นแต่ละหุ้น','กำไรสุทธิ ÷ จำนวนหุ้นสามัญ'],
+['PER','อัตราส่วนราคาต่อกำไร','ตราสารทุน','ต้องจ่ายกี่เท่าของกำไรต่อปีเพื่อซื้อหุ้น','ราคาหุ้น ÷ EPS ใช้หาราคาเหมาะสม = PER × EPS'],
+['PBV','อัตราส่วนราคาต่อมูลค่าทางบัญชี','ตราสารทุน','ราคาหุ้นแพงกว่ามูลค่าในบัญชีกี่เท่า','ราคาหุ้น ÷ BV ต่อหุ้น'],
+['DDM','Dividend Discount Model','ตราสารทุน','หามูลค่าหุ้นจากปันผลที่จะได้ในอนาคต','Gordon: P = D₁ ÷ (k − g) โดย D₁ = D₀(1+g)'],
+['หุ้นบุริมสิทธิ','Preferred stock','ตราสารทุน','หุ้นที่ได้ปันผลก่อนหุ้นธรรมดา','ได้ปันผลและคืนทุนก่อนหุ้นสามัญ มักไม่มีสิทธิออกเสียง'],
+['หุ้นวัฏจักร','Cyclical stock','ตราสารทุน','ขึ้นลงตามฤดูเศรษฐกิจ','ผลประกอบการผันแปรตามวัฏจักรเศรษฐกิจ เช่น ปิโตรเคมี เหล็ก'],
+['หุ้นตั้งรับ','Defensive stock','ตราสารทุน','ขายได้แม้เศรษฐกิจแย่ เพราะคนต้องใช้ทุกวัน','ผลประกอบการไม่ค่อยผันผวนตามเศรษฐกิจ เช่น อาหาร สาธารณูปโภค'],
+['Silent period','ช่วงห้ามขายหุ้น','ตราสารทุน','ผู้ถือหุ้นใหญ่ห้ามรีบขายหุ้นทิ้งหลังเข้าตลาด','strategic shareholders ห้ามขาย 55% ของหุ้นที่ถือเป็นเวลา 1 ปี'],
+['วอร์แรนท์','Warrant','อนุพันธ์','คูปองสิทธิซื้อหุ้นในราคาที่กำหนด','ใบสำคัญแสดงสิทธิที่ออกโดยบริษัท ใช้สิทธิแล้วบริษัทออกหุ้นใหม่'],
+['DW','Derivative Warrant','อนุพันธ์','คูปองสิทธิที่คนอื่นออก ไม่ใช่บริษัทเจ้าของหุ้น','ออกโดยสถาบันการเงิน มี call/put และมีผู้ดูแลสภาพคล่อง'],
+['มูลค่าที่แท้จริง','Intrinsic value','อนุพันธ์','ค่าที่คูปองมีแน่ ๆ ถ้าใช้สิทธิตอนนี้','call: max(ราคาหุ้น − ราคาใช้สิทธิ, 0)'],
+['มูลค่าเวลา','Time value','อนุพันธ์','ค่าความหวังที่ยังมีเวลาเหลือ','ราคาวอร์แรนท์ − มูลค่าที่แท้จริง ลดลงเมื่อใกล้หมดอายุ'],
+['Gearing','อัตราทด','อนุพันธ์','ใช้เงินน้อยคุมหุ้นได้หลายเท่า','ราคาหุ้น ÷ (ราคาวอร์แรนท์ × อัตราใช้สิทธิ)'],
+['NVDR','Non-Voting Depositary Receipt','ตราสารทุน','ได้ปันผลเหมือนหุ้นแต่ไม่มีสิทธิโหวต','ตราสารที่ให้สิทธิประโยชน์ทางการเงินเหมือนหุ้น แต่ไม่มีสิทธิออกเสียง'],
+['AOM','Automatic Order Matching','ตลาด','ระบบจับคู่คนซื้อกับคนขายอัตโนมัติ','จับคู่แบบ price then time priority'],
+['XD','Excluded Dividend','ตลาด','ซื้อวันนี้ไม่ได้ปันผลรอบนี้แล้ว','ผู้ซื้อหุ้นในวันที่ขึ้นเครื่องหมายไม่มีสิทธิรับเงินปันผลงวดนั้น'],
+['SP','Suspension','ตลาด','ห้ามซื้อขายชั่วคราว','ตลาดสั่งห้ามซื้อขายหลักทรัพย์ชั่วคราว'],
+['Cash balance','บัญชีเงินสดล่วงหน้า','ตลาด','ต้องมีเงินครบก่อนซื้อ','มาตรการให้วางเงินสดเต็มจำนวนก่อนซื้อหุ้นที่มีการซื้อขายผิดปกติ'],
+['Margin','บัญชีมาร์จิ้น','ตลาด','ยืมเงินโบรกเกอร์ซื้อหุ้น','เรียกหลักประกันเพิ่มเมื่อ < 35% บังคับขายเมื่อ < 25%'],
+['Circuit breaker','มาตรการหยุดพักการซื้อขาย','ตลาด','เบรกฉุกเฉินเมื่อตลาดร่วงแรง','ขั้น 1 ดัชนีลง 8% หยุด 30 นาที ขั้น 2 15% ขั้น 3 20%'],
+['หุ้นกู้','Debenture','ตราสารหนี้','ให้บริษัทยืมเงินแล้วได้ดอกเบี้ย','ตราสารหนี้ที่บริษัทออกเพื่อกู้เงิน ผู้ถือมีฐานะเจ้าหนี้'],
+['อัตราดอกเบี้ยหน้าตั๋ว','Coupon rate','ตราสารหนี้','ดอกเบี้ยที่สัญญาว่าจะจ่าย','อัตราดอกเบี้ยต่อปีคิดจากมูลค่าที่ตราไว้'],
+['Zero coupon bond','ตราสารหนี้ไม่มีดอกเบี้ย','ตราสารหนี้','ซื้อราคาลดวันนี้ รับเต็มตอนครบกำหนด','ไม่จ่ายดอกเบี้ยระหว่างทาง ขายต่ำกว่า par ดูเรชัน = อายุคงเหลือ ไม่มี reinvestment risk'],
+['Callable bond','หุ้นกู้ไถ่ถอนก่อนกำหนด (สิทธิผู้ออก)','ตราสารหนี้','บริษัทขอคืนเงินก่อนได้','ผู้ออกใช้สิทธิเมื่อดอกเบี้ยลด จึงให้คูปองสูงกว่าปกติ'],
+['Puttable bond','หุ้นกู้ขายคืนก่อนกำหนด (สิทธิผู้ถือ)','ตราสารหนี้','เราขอเงินคืนก่อนได้','ผู้ถือใช้สิทธิเมื่อดอกเบี้ยขึ้น จึงให้คูปองต่ำกว่าปกติ'],
+['Convertible bond','หุ้นกู้แปลงสภาพ','ตราสารหนี้','หุ้นกู้ที่เปลี่ยนเป็นหุ้นได้','ผู้ถือมีสิทธิแปลงเป็นหุ้นสามัญตามอัตราที่กำหนด'],
+['Current yield','อัตราผลตอบแทนปัจจุบัน','ตราสารหนี้','ดอกเบี้ยต่อปีเทียบกับราคาที่จ่ายจริง','ดอกเบี้ยต่อปี ÷ ราคาตลาด'],
+['YTM','Yield to Maturity','ตราสารหนี้','ผลตอบแทนทั้งหมดถ้าถือจนครบกำหนด','อัตราคิดลดที่ทำให้ PV ของกระแสเงินสดเท่ากับราคาตลาด'],
+['ดูเรชัน','Duration','ตราสารหนี้','ราคาหุ้นกู้ไวต่อดอกเบี้ยแค่ไหน','สูงเมื่ออายุยาว คูปองต่ำ YTM ต่ำ ยิ่งสูงราคายิ่งเปลี่ยนแรงเมื่อดอกเบี้ยเปลี่ยน'],
+['Yield curve','เส้นอัตราผลตอบแทน','ตราสารหนี้','กราฟดอกเบี้ยตามระยะเวลากู้','ปกติชันขึ้น ระยะยาวให้ผลตอบแทนสูงกว่า'],
+['Investment grade','ระดับน่าลงทุน','ตราสารหนี้','ผู้ออกมีโอกาสผิดนัดชำระต่ำ','BBB- (TRIS/S&P) หรือ Baa3 (Moody\'s) ขึ้นไป'],
+['Reinvestment risk','ความเสี่ยงจากการนำเงินไปลงทุนต่อ','ตราสารหนี้','ดอกเบี้ยที่ได้มา เอาไปฝากต่อได้ดอกน้อยลง','ความเสี่ยงที่กระแสเงินสดรับจะลงทุนต่อได้ในอัตราต่ำลงเมื่อดอกเบี้ยลด'],
+['Premium / Discount','ราคาสูง/ต่ำกว่ามูลค่าที่ตราไว้','ตราสารหนี้','คูปองดีกว่าตลาดขายแพง คูปองแย่กว่าตลาดขายถูก','คูปอง > k → Premium ; คูปอง < k → Discount'],
+['NAV','มูลค่าทรัพย์สินสุทธิ','กองทุน','ราคาต่อส่วนของกองทุน','(ทรัพย์สิน + ค้างรับ + เงินสด − หนี้สิน − ค่าใช้จ่ายค้างจ่าย) ÷ จำนวนหน่วย'],
+['บลจ.','บริษัทหลักทรัพย์จัดการกองทุน','กองทุน','เชฟที่ลงมือบริหารเงิน','ผู้บริหารจัดการกองทุนตามนโยบายที่ระบุในโครงการ'],
+['ผู้ดูแลผลประโยชน์','Trustee','กองทุน','คนเฝ้ากระเป๋าเงิน','เก็บรักษาทรัพย์สินกองทุนและดูแลให้ บลจ. ปฏิบัติตามโครงการ'],
+['นายทะเบียน','Registrar','กองทุน','คนจดว่าใครมีกี่หน่วย','บันทึกข้อมูลผู้ถือหน่วยและจำนวนหน่วยลงทุน'],
+['ETF','Exchange Traded Fund','กองทุน','กองทุนที่ซื้อขายในตลาดหุ้นได้ทั้งวัน','กองทุนดัชนีที่จดทะเบียนซื้อขายในตลาดหลักทรัพย์'],
+['Feeder fund','กองทุนฟีดเดอร์','กองทุน','กองทุนที่ส่งเงินไปกองแม่กองเดียว','ลงทุนในกองทุนหลักต่างประเทศ (master fund) เป็นหลัก'],
+['Fund of Funds','กองทุนรวมหน่วยลงทุน','กองทุน','กองทุนที่ซื้อกองทุนอื่นหลายกอง','ลงทุนในหน่วยลงทุนของกองทุนอื่นหลายกอง'],
+['Freehold','กรรมสิทธิ์','กองทุน','ซื้อบ้านเป็นของเรา','กองทุนอสังหาฯ ที่มีกรรมสิทธิ์ มีมูลค่าคงเหลือ'],
+['Leasehold','สิทธิการเช่า','กองทุน','เช่าบ้าน หมดสัญญาก็ต้องคืน','มีสิทธิการเช่า มูลค่าลดลงจนเป็น 0 เมื่อสิ้นสัญญา'],
+['REIT','ทรัสต์เพื่อการลงทุนในอสังหาริมทรัพย์','กองทุน','กองลงทุนตึกและที่ดินแล้วแบ่งค่าเช่า','จ่ายปันผล ≥ 90% ของกำไรสุทธิ'],
+['Trigger fund','กองทุนทริกเกอร์','กองทุน','กองทุนที่ปิดเมื่อถึงเป้ากำไร','เลิกกองทุนหรือเปลี่ยนนโยบายเมื่อผลตอบแทนถึงเป้าหมาย'],
+['TER','Total Expense Ratio','กองทุน','ค่าใช้จ่ายทั้งปีของกองทุน คิดเป็นเปอร์เซ็นต์','ค่าจัดการ + trustee + นายทะเบียน + อื่น ๆ ไม่รวมค่าธรรมเนียมขาย/รับซื้อคืน'],
+['Tracking error','ความคลาดเคลื่อนจากดัชนี','กองทุน','กองทุนเดินตามดัชนีได้เป๊ะแค่ไหน','SD ของส่วนต่างผลตอบแทนกองทุนกับ benchmark ยิ่งต่ำยิ่งตามดัชนีได้ดี'],
+['Information ratio','อัตราส่วนข้อมูล','กองทุน','ชนะดัชนีได้เท่าไรต่อความคลาดเคลื่อน','ผลตอบแทนส่วนเกินจาก benchmark ÷ tracking error'],
+['DCA','Dollar Cost Averaging','กองทุน','ออมเท่ากันทุกเดือน ไม่ต้องเดาจังหวะ','ลงทุนจำนวนเงินเท่ากันสม่ำเสมอ เฉลี่ยต้นทุนต่อหน่วย'],
+['Core & Satellite','กลยุทธ์แกนหลักและดาวเทียม','กองทุน','เงินก้อนใหญ่ลงของมั่นคง ก้อนเล็กลองหาโอกาส','ส่วนหลักลงทุนระยะยาวความเสี่ยงต่ำ ส่วนเสริมลงทุนเชิงรุก'],
+['KYC','Know Your Customer','จรรยาบรรณ','ถามให้รู้จักลูกค้าก่อนแนะนำ','การรู้จักลูกค้า ฐานะ วัตถุประสงค์ ประสบการณ์ และความเสี่ยงที่รับได้'],
+['Suitability','ความเหมาะสม','จรรยาบรรณ','เลือกสินค้าที่เหมาะกับคนนั้น','การแนะนำสอดคล้องกับข้อมูลจาก KYC และผลประเมินความเสี่ยง'],
+['ผู้ลงทุนเปราะบาง','Vulnerable investor','จรรยาบรรณ','คนที่ต้องดูแลพิเศษเพราะอาจเข้าใจยาก','เช่น อายุ ≥ 60 ปีและไม่มีความรู้/ประสบการณ์ลงทุน'],
+['Churning','การซื้อขายถี่เกินควร','จรรยาบรรณ','ซื้อขายบ่อย ๆ เพื่อเอาค่าคอม','ส่งคำสั่งซื้อขายเกินความจำเป็นเพื่อประโยชน์ของผู้แนะนำ เป็นข้อห้าม'],
+['Front running','การส่งคำสั่งตัดหน้า','จรรยาบรรณ','แอบซื้อก่อนลูกค้าเพื่อเอากำไร','ใช้ข้อมูลคำสั่งของลูกค้าส่งคำสั่งของตนก่อน เป็นข้อห้าม'],
+['ข้อมูลภายใน','Inside information','จรรยาบรรณ','ความลับบริษัทที่คนทั่วไปยังไม่รู้','ข้อมูลที่ยังไม่เปิดเผยต่อสาธารณะและมีผลต่อราคา ห้ามใช้ซื้อขายหรือบอกต่อ'],
+['AML','Anti-Money Laundering','จรรยาบรรณ','กันไม่ให้คนร้ายใช้เราฟอกเงิน','ตรวจแหล่งที่มาของเงิน รายงานธุรกรรมที่น่าสงสัย ห้ามแจ้งลูกค้าว่ามีการรายงาน'],
+['Ability to take risk','ความสามารถรับความเสี่ยง','จรรยาบรรณ','กระเป๋าเงินรับการขาดทุนได้แค่ไหน','พิจารณาจากอายุ รายได้ ความมั่งคั่ง หนี้สิน ภาระ ระยะเวลาลงทุน'],
+['Willingness to take risk','ความเต็มใจรับความเสี่ยง','จรรยาบรรณ','ใจรับการขาดทุนได้แค่ไหน','พิจารณาจากทัศนคติ พฤติกรรม และประสบการณ์ลงทุน'],
+['IC','Investment Consultant','จรรยาบรรณ','คนแนะนำการลงทุน','ผู้แนะนำการลงทุน แนะนำได้แต่วางแผนการลงทุนไม่ได้'],
+['IP','Investment Planner','จรรยาบรรณ','คนแนะนำและวางแผนการลงทุนได้','ผู้วางแผนการลงทุน แนะนำและวางแผนการลงทุนได้']
+];
+const cats=['ทั้งหมด',...new Set(G.map(g=>g[2]))];let gCat='ทั้งหมด';
+$('gChips').innerHTML=cats.map(c=>`<button data-c="${c}" aria-pressed="${c===gCat}">${c}</button>`).join('');
+$('gChips').addEventListener('click',e=>{if(!e.target.dataset.c)return;gCat=e.target.dataset.c;$('gChips').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===gCat));renderG()});
+$('gSearch').addEventListener('input',renderG);
+function renderG(){
+  const q=$('gSearch').value.trim().toLowerCase();
+  const list=G.filter(g=>(gCat==='ทั้งหมด'||g[2]===gCat)&&(!q||g.join(' ').toLowerCase().includes(q)));
+  $('gCount').textContent=`${list.length} คำ`;
+  $('glist').innerHTML=list.length?list.map(([t,en,c,s,d])=>`<div class="term"><span class="cat">${c}</span><h4>${t}</h4><div class="en">${en}</div><div class="s">🧒 ${s}</div><p class="dd">${d}</p></div>`).join(''):'<p class="empty">ไม่พบคำนี้ ลองพิมพ์ภาษาอังกฤษ หรือเลือกหมวด "ทั้งหมด"</p>';
+}
+renderG();
+
+/* ---------- quiz ---------- */
+const Q=[
+['หุ้นเพิ่งจ่ายปันผล 2 บาท อัตราเติบโต 5% ผลตอบแทนที่ต้องการ 10% มูลค่าหุ้นตาม DDM เท่ากับเท่าใด',['40 บาท','42 บาท','20 บาท','21 บาท'],1,'D₁ = 2 × 1.05 = 2.10 แล้ว 2.10 ÷ 0.05 = 42 ถ้าลืมคูณ (1+g) จะได้ 40 ซึ่งเป็นตัวลวง'],
+['Rf 2% Rm 10% β 1.5 และคาดว่าหุ้นให้ผลตอบแทน 13% ควรทำอย่างไร',['ซื้อ เพราะ Underpriced','ขาย เพราะ Overpriced','ถือ เพราะราคาเหมาะสม','ข้อมูลไม่พอ'],1,'k = 2 + 1.5 × 8 = 14% ผลตอบแทนคาดหวัง 13% ต่ำกว่า k จึง Overpriced'],
+['หุ้นราคา 12 บาท ราคาใช้สิทธิ 10 บาท วอร์แรนท์ราคา 3 บาท (1:1) มูลค่าเวลาเท่าใด',['1 บาท','2 บาท','3 บาท','5 บาท'],0,'มูลค่าที่แท้จริง 12 − 10 = 2 มูลค่าเวลา 3 − 2 = 1'],
+['ข้อใดทำให้ดูเรชันของตราสารหนี้สูงขึ้น',['อายุคงเหลือสั้นลง','อัตราคูปองสูงขึ้น','YTM ต่ำลง','เปลี่ยนเป็นหุ้นกู้ amortizing'],2,'ดูเรชันสูงเมื่ออายุยาว คูปองต่ำ และ YTM ต่ำ'],
+['หุ้นกู้คูปอง 5% ขณะที่ผลตอบแทนที่ต้องการในตลาด 6% ราคาจะเป็นอย่างไร',['สูงกว่า par (Premium)','ต่ำกว่า par (Discount)','เท่ากับ par','ขึ้นกับอายุเท่านั้น'],1,'คูปองต่ำกว่า k ราคาต้องลดลงเพื่อชดเชย จึงขายแบบ Discount'],
+['ถ้าความเสี่ยงที่ไม่เป็นระบบของพอร์ตเพิ่มขึ้น โดยเบต้าเท่าเดิม ข้อใดถูก',['Sharpe ลด Treynor คงที่','Sharpe คงที่ Treynor ลด','ทั้งคู่ลด','ทั้งคู่คงที่'],0,'Sharpe ใช้ SD ซึ่งรวมความเสี่ยงที่ไม่เป็นระบบ Treynor ใช้เฉพาะ β'],
+['รายการใดไม่นับรวมใน TER',['ค่าธรรมเนียมการจัดการ','ค่าธรรมเนียมผู้ดูแลผลประโยชน์','ค่าธรรมเนียมการขายหน่วยลงทุน','ค่าธรรมเนียมนายทะเบียน'],2,'ค่าธรรมเนียมขาย/รับซื้อคืนเก็บจากผู้ลงทุนโดยตรง ไม่ได้เก็บจากกองทุน'],
+['ลูกค้าบอกให้เจ้าหน้าที่ "ซื้อขายตามที่เห็นสมควรได้เลย" เจ้าหน้าที่จึงส่งคำสั่งเองเพื่อไม่ให้ลูกค้าเสียโอกาส ข้อใดถูกต้อง',['ทำได้ เพราะลูกค้ายินยอม','ทำได้ ถ้ามีกำไร','ไม่ได้ เพราะเป็นการตัดสินใจแทนลูกค้า','ทำได้ ถ้าบันทึกเสียงไว้'],2,'การตัดสินใจแทนลูกค้าเป็นข้อห้ามเด็ดขาด แม้ลูกค้ายินยอมหรือมีเจตนาดี'],
+['บัญชี margin จะถูกบังคับขายเมื่ออัตราหลักประกันต่ำกว่าเท่าใด',['35%','30%','25%','20%'],2,'เรียกหลักประกันเพิ่มเมื่อ < 35% และบังคับขายเมื่อ < 25%'],
+['ข้อใดคือความแตกต่างระหว่าง IC และ IP',['IC วางแผนได้ IP แนะนำไม่ได้','IC แนะนำได้แต่วางแผนไม่ได้ IP ทำได้ทั้งสองอย่าง','ทั้งสองทำได้เหมือนกัน','IP แนะนำได้เฉพาะกองทุนรวม'],1,'IC แนะนำการลงทุนได้ ส่วน IP ทั้งแนะนำและวางแผนการลงทุนได้']
+];
+let qRight=0,qDone=0;
+function renderQ(){
+  qRight=0;qDone=0;$('qScore').textContent='';
+  $('qlist').innerHTML=Q.map(([p,o,a,w],i)=>`<div class="q" data-i="${i}"><p>${i+1}. ${p}</p>${o.map((t,j)=>`<button data-j="${j}">${'กขคง'[j]}. ${t}</button>`).join('')}<div class="why" role="status">${w}</div></div>`).join('');
+}
+$('qlist').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;const box=b.closest('.q');if(box.classList.contains('answered'))return;
+  const i=+box.dataset.i,j=+b.dataset.j,a=Q[i][2];
+  box.classList.add('answered');
+  box.querySelectorAll('button')[a].classList.add('right');
+  if(j!==a)b.classList.add('wrong');else qRight++;
+  qDone++;$('qScore').textContent=`ได้ ${qRight}/${qDone}`+(qDone===Q.length?(qRight>=8?' พร้อมแล้ว':' ทวนบทที่ผิดอีกรอบ'):'');
+});
+$('qReset').addEventListener('click',renderQ);
+renderQ();
+</script>
